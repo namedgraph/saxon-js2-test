@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0023)https://localhost:4443/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="og:url" content="https://localhost:4443/">
+      <meta name="twitter:url" content="https://localhost:4443/">
+      <meta name="og:title" content="Root">
+      <meta name="twitter:title" content="Root">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="description" content="Root container">
+      <meta property="og:description" content="Root container">
+      <meta name="twitter:description" content="Root container">
+      <meta property="og:site_name" content="Root">
+      <title>Root - Root</title>
+      <link href="https://localhost:4443/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+      <link href="https://localhost:4443/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+      <link href="https://localhost:4443/static/com/atomgraph/client/css/bootstrap.css" rel="stylesheet" type="text/css">
+      <link href="https://localhost:4443/static/com/atomgraph/linkeddatahub/css/bootstrap.css" rel="stylesheet" type="text/css">
+      <link href="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/wymeditor/skins/default/skin.css" rel="stylesheet" type="text/css"><script type="text/javascript">
+            
+                var baseUri = "https://localhost:4443/";
+                var ontologyUri = "https://localhost:4443/ns#";
+                var contextUri = "https://localhost:4443/";
+            
+        </script><script type="text/javascript" src="SaxonJS2.rt.js"></script><script type="text/javascript">
+                
+                    window.onload = function() {
+                       SaxonJS.transform({
+                          stylesheetLocation: "client.xsl.sef.json",
+                          initialTemplate: "main",
+                          logLevel: 10
+                       }, "async");
+                    }
+                
+            </script></head>
+   <body>
+      <div class="navbar navbar-fixed-top">
+         <div class="navbar-inner">
+            <div class="container-fluid"><button class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="brand" href="https://localhost:4443/">Root</a><div id="collapsing-top-navbar" class="nav-collapse collapse" style="margin-left: 17%;">
+                  <form action="https://localhost:4443/" method="get" class="navbar-form pull-left" accept-charset="UTF-8" title="Search for resources by title, label, content etc.">
+                     <div class="input-append"><input type="text" id="uri" name="uri" class="input-xxlarge typeahead"><button type="submit" class="btn btn-primary btn-search"></button></div>
+                  </form>
+                  <ul class="nav pull-right">
+                     <li><a href="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23QueryEditorMode">SPARQL editor</a></li>
+                     <li>
+                        <div class="btn-group"><button title="Applications" class="btn dropdown-toggle btn-context"></button><ul class="dropdown-menu pull-right"></ul>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="btn-group"><button type="button" title="Owners" class="btn dropdown-toggle btn-agent"></button><ul class="dropdown-menu pull-right">
+                              <li><a href="https://localhost:4443/admin/acl/agents/af028d4c-496d-4050-a3b9-08ccc1e590b0/#this" title="https://localhost:4443/admin/acl/agents/af028d4c-496d-4050-a3b9-08ccc1e590b0/#this">Martynas LDH</a></li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="navbar-inner action-bar">
+            <div class="container-fluid">
+               <div class="row-fluid">
+                  <div class="span2">
+                     <div class="btn-group pull-left"><button type="button" title="Create a new resource of selected type" class="btn btn-primary dropdown-toggle create-action">Create <span class="caret"></span></button><ul class="dropdown-menu">
+                           <ul>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#Ask"><button type="button" title="https://localhost:4443/ns#Ask" class="btn add-constructor create-ask">ASK<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23Ask&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#Construct"><button type="button" title="https://localhost:4443/ns#Construct" class="btn add-constructor create-construct">CONSTRUCT<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23Construct&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#CSVImport"><button type="button" title="https://localhost:4443/ns#CSVImport" class="btn add-constructor create-import">CSV import<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23CSVImport&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#Describe"><button type="button" title="https://localhost:4443/ns#Describe" class="btn add-constructor create-describe">DESCRIBE<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23Describe&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#DydraService"><button type="button" title="https://localhost:4443/ns#DydraService" class="btn add-constructor create-service">Dydra service<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23DydraService&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#GenericService"><button type="button" title="https://localhost:4443/ns#GenericService" class="btn add-constructor create-service">Generic service<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23GenericService&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#GraphChart"><button type="button" title="https://localhost:4443/ns#GraphChart" class="btn add-constructor create-chart">Graph chart<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23GraphChart&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#ResultSetChart"><button type="button" title="https://localhost:4443/ns#ResultSetChart" class="btn add-constructor create-chart">Result set chart<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23ResultSetChart&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                              <li><input type="hidden" class="forClass" value="https://localhost:4443/ns#Select"><button type="button" title="https://localhost:4443/ns#Select" class="btn add-constructor create-select">SELECT<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%23Select&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                           </ul>
+                           <li class="divider"></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/default#Container"><button type="button" title="https://localhost:4443/ns/default#Container" class="btn add-constructor create-container">Container<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%2Fdefault%23Container&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/default#Item"><button type="button" title="https://localhost:4443/ns/default#Item" class="btn add-constructor create-item">Item<input type="hidden" class="action" value="https://localhost:4443/?forClass=https%3A%2F%2Flocalhost%3A4443%2Fns%2Fdefault%23Item&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></li>
+                           <li class="divider"></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="span6">
+                     <ul class="breadcrumb">
+                        <li class=" container-logo"><a href="https://localhost:4443/" title="https://localhost:4443/">Root</a></li>
+                     </ul>
+                  </div>
+                  <div class="span4">
+                     <div class="btn-group pull-right"><button type="button" title="Settings" class="btn dropdown-toggle btn-settings">Settings <span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a href="https://localhost:4443/admin/" target="_blank">
+                                 Administration
+                                 </a></li>
+                           <li><a href="https://localhost:4443/ns" target="_blank">Namespace</a></li>
+                           <li><a href="https://linkeddatahub.com/linkeddatahub/docs/" target="_blank">Help</a></li>
+                        </ul>
+                     </div>
+                     <div class="btn-group pull-right"><button type="button" title="Export RDF data for this response" class="btn dropdown-toggle btn-export">Export<span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a href="https://localhost:4443/?uri=https%3A%2F%2Flocalhost%3A4443%2F&amp;accept=application%2Frdf%2Bxml" title="application/rdf+xml">RDF/XML</a></li>
+                           <li><a href="https://localhost:4443/?uri=https%3A%2F%2Flocalhost%3A4443%2F&amp;accept=text%2Fturtle" title="text/turtle">Turtle</a></li>
+                           <li class="divider"></li>
+                           <li><a href="https://localhost:4443/?debug=http%3A%2F%2Fwww.w3.org%2Fns%2Fsparql-service-description%23SPARQL11Query" title="application/sparql-query">SPARQL query</a></li>
+                        </ul>
+                     </div>
+                     <div class="pull-right">
+                        <form action="https://localhost:4443/?_method=DELETE" method="post"><button type="submit" title="Delete the graph of this resource" class="btn btn-delete">Delete</button></form>
+                     </div>
+                     <div class="pull-right"><button title="Edit the graph of this resource" class="btn btn-edit">Edit<input type="hidden" value="https://localhost:4443/graphs/173eedbd-3d3b-45c9-b021-17d4e1e03009/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23EditMode&amp;mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ModalMode"></button></div>
+                     <div class="pull-right">
+                        <form action="https://localhost:4443/" method="get"><input type="hidden" name="ban" value="true"><button type="submit" title="Clear the resource from SPARQL results cache" class="btn btn-ban">BAN resource from cache</button></form>
+                     </div>
+                     <div class="btn-group pull-right"><button type="button" title="Allowed access modes" class="btn dropdown-toggle btn-acl">Access <span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a title="http://www.w3.org/ns/auth/acl#Append">✔ Append</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Control">✔ Control</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Read">✔ Read</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Write">✔ Write</a></li>
+                        </ul>
+                     </div>
+                     <div class="btn-group pull-right"><button type="button" title="Change layout mode" class="btn dropdown-toggle btn-read">Properties <span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a href="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23GraphMode" title="https://w3id.org/atomgraph/client#GraphMode" class=" btn-graph">Graph</a></li>
+                           <li><a href="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23MapMode" title="https://w3id.org/atomgraph/client#MapMode" class=" btn-map">Map</a></li>
+                           <li class="active"><a href="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23ReadMode" title="https://w3id.org/atomgraph/client#ReadMode" class=" btn-read">Properties</a></li>
+                           <li><a href="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23QueryEditorMode" title="https://w3id.org/atomgraph/client#QueryEditorMode" class=" btn-query">
+                                 <text>Query editor</text></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="content-body" class="container-fluid">
+         <div class="row-fluid">
+            <div id="left-nav" class="span2">
+               <div class="well well-small">
+                  <h2 class="nav-header"><a href="https://localhost:4443/" title="https://localhost:4443/">Root</a></h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://localhost:4443/test/" title="https://localhost:4443/test/">Test</a></li>
+                  </ul>
+               </div>
+               <div class="well well-small">
+                  <ul class="nav nav-list">
+                     <li><a href="https://localhost:4443/latest/" class=" latest"> Latest</a></li>
+                     <li><a href="https://localhost:4443/geo/" class=" geo"> Geo</a></li>
+                     <li><a href="https://localhost:4443/services/" class=" services"> Services</a></li>
+                     <li><a href="https://localhost:4443/files/" class=" files"> Files</a></li>
+                     <li><a href="https://localhost:4443/imports/" class=" imports"> Imports</a></li>
+                     <li><a href="https://localhost:4443/queries/" class=" queries"> Queries</a></li>
+                     <li><a href="https://localhost:4443/charts/" class=" charts"> Charts</a></li>
+                  </ul>
+               </div>
+            </div><button id="test">TEST</button><div id="main-content" class="span7"></div>
+            <div class="span3">
+               <div class="well well-small">
+                  <dl class="dl-horizontal">
+                     <dt><span title="http://purl.org/dc/terms/created">Date Created</span></dt>
+                     <dd><span title="http://www.w3.org/2001/XMLSchema#dateTime">17 February 2016 19:51</span></dd>
+                     <dt><span title="https://www.w3.org/ns/ldt/document-hierarchy/domain#select">Select</span></dt>
+                     <dd><a href="https://localhost:4443/queries/default/select-children/#this" title="https://localhost:4443/queries/default/select-children/#this">Select children</a></dd>
+                  </dl>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="footer container-fluid">
+         <div class="row-fluid">
+            <div class="offset2 span8">
+               <div class="span3">
+                  <h2 class="nav-header">About</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://linkeddatahub.com/linkeddatahub/docs/about/" target="_blank">LinkedDataHub</a></li>
+                     <li><a href="https://atomgraph.com/" target="_blank">AtomGraph</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Resources</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://linkeddatahub.com/linkeddatahub/docs/" target="_blank">Documentation</a></li>
+                     <li><a href="https://www.youtube.com/playlist?list=PLnDXST4pVcQQr-j3YXrVvGRP46E2Nnn5l" target="_blank">Screencasts</a></li>
+                     <li><a href="https://linkeddatahub.com/demo/" target="_blank">Demo apps</a></li>
+                     <li><a href="https://atomgraph.github.io/Linked-Data-Templates/" target="_blank">LDT specification</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Support</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://groups.io/g/linkeddatahub" target="_blank">Mailing list</a></li>
+                     <li><a href="https://github.com/AtomGraph/LinkedDataHub/issues" target="_blank">Report issues</a></li>
+                     <li><a href="mailto:support@linkeddatahub.com">Contact support</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Follow us</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://twitter.com/atomgraphhq" target="_blank">@atomgraphhq</a></li>
+                     <li><a href="https://github.com/AtomGraph" target="_blank">github.com/AtomGraph</a></li>
+                     <li><a href="https://www.facebook.com/AtomGraph" target="_blank">facebook.com/AtomGraph</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   
+</body></html>
