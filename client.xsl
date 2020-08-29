@@ -14,7 +14,7 @@ version="2.0"
     <xsl:template match="button[@id = 'test']" mode="ixsl:onclick">
         <xsl:message>TEST</xsl:message>
 
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': ixsl:location(), 'headers': map{ 'Accept': 'text/html' } }">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/html' } }">
             <xsl:call-template name="request-completed">
                 <xsl:with-param name="action" select="ac:test#1" as="function(*)"/>
             </xsl:call-template>
