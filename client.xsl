@@ -32,6 +32,12 @@ version="2.0"
         <xsl:param name="response" as="map(*)"/>
 
         <xsl:message>RESPONSE STATUS: <xsl:value-of select="$response?status"/></xsl:message>
+
+        <xsl:call-template name="another-template"/>
     </xsl:function>
+
+    <xsl:template name="another-template">
+        <xsl:message>TEMPLATE CALLED FROM FUNCTION</xsl:message>
+    </xsl:template>
 
 </xsl:stylesheet>
