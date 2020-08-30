@@ -25,9 +25,7 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
         <xsl:param name="action" as="function(*)"/>
 
-        <xsl:result-document href="#test">
-            <xsl:sequence select="$action(.)"/>
-        </xsl:result-document>
+        <xsl:sequence select="$action(.)"/>
     </xsl:template>
 
     <xsl:function name="ac:test">
