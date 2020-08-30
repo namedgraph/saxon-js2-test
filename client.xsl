@@ -25,7 +25,9 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
         <xsl:param name="action" as="function(*)"/>
 
-        <xsl:sequence select="$action(.)"/>
+        <xsl:result-document href="#test">
+            <xsl:sequence select="$action(.)"/>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:function name="ac:test">
@@ -33,9 +35,7 @@ version="2.0"
 
         <xsl:message>RESPONSE STATUS: <xsl:value-of select="$response?status"/></xsl:message>
 
-        <xsl:result-document href="#test">
-            <xsl:call-template name="another-template"/>
-        </xsl:result-document>
+        <xsl:call-template name="another-template"/>
     </xsl:function>
 
     <xsl:template name="another-template">
