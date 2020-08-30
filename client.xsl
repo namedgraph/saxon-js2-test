@@ -33,7 +33,9 @@ version="2.0"
 
         <xsl:message>RESPONSE STATUS: <xsl:value-of select="$response?status"/></xsl:message>
 
-        <xsl:call-template name="another-template"/>
+        <xsl:result-document href="#test">
+            <xsl:call-template name="another-template"/>
+        </xsl:result-document>
     </xsl:function>
 
     <xsl:template name="another-template">
