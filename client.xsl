@@ -10,6 +10,11 @@ version="2.0"
 >
 
     <xsl:template name="main">
+        <xsl:message>TEST FUNCTION</xsl:message>
+
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
+            <xsl:call-template name="param-request-completed"/>
+        </ixsl:schedule-action>
     </xsl:template>
 
     <!-- test <xsl:call-template> invokation from ac:test() -->
@@ -45,13 +50,13 @@ version="2.0"
 
     <!-- test <xsl:with-param> invoked from <ixsl:schedule-action> -->
 
-    <xsl:template match="button[@id = 'test-param']" mode="ixsl:onclick">
+<!--     <xsl:template match="button[@id = 'test-param']" mode="ixsl:onclick">
         <xsl:message>TEST FUNCTION</xsl:message>
-
+    
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
             <xsl:call-template name="param-request-completed"/>
         </ixsl:schedule-action>
-    </xsl:template>
+    </xsl:template> -->
 
     <xsl:template name="param-request-completed">
         <xsl:context-item as="map(*)" use="required"/>
