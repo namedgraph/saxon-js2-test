@@ -57,7 +57,7 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
 
         <xsl:choose>
-            <xsl:when test="?status = 200 and ?media-type = 'application/rdf+xml'">
+            <xsl:when test="?status = 200 and ?media-type = 'application/xml'">
                 <xsl:for-each select="?body">
                     <xsl:variable name="some-value" select="/note/to" as="xs:string"/>
 
