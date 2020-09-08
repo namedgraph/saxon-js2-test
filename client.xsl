@@ -69,6 +69,7 @@ version="2.0"
             <xsl:when test="?status = 200 and ?media-type = 'application/xml'">
                 <xsl:for-each select="?body">
                     <xsl:variable name="some-value" select="/note/to" as="xs:string?"/>
+                    <xsl:message>SOME VALUE: <xsl:value-of select="$some-value"/></xsl:message>
                     <xsl:if test="$some-value">
                         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
                             <xsl:call-template name="param-second-request-completed">
