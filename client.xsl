@@ -92,6 +92,7 @@ version="2.0"
         <xsl:param name="other-value" as="xs:string"/>
 
         <xsl:message>PARAM $some-value: <xsl:value-of select="$some-value"/></xsl:message>
+        <xsl:message>PARAM $other-value: <xsl:value-of select="$other-value"/></xsl:message>
     </xsl:template>
 
 </xsl:stylesheet>
