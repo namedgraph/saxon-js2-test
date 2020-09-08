@@ -14,6 +14,9 @@
                        SaxonJS.transform({
                           stylesheetLocation: "client.xsl.sef.json",
                           initialTemplate: "main",
+                          stylesheetParams: {
+                                "global-param": "whatever"
+                                }
                           logLevel: 10
                        }, "async");
                     }
@@ -24,8 +27,8 @@
     <p>
         <button id="test-function">TEST FUNCTION</button>
     </p>
-    <p>
+<!--     <p>
         <button id="test-param">TEST PARAM</button>
-    </p>
+    </p> -->
  </body>
 </html>

@@ -9,7 +9,11 @@ extension-element-prefixes="ixsl"
 version="2.0"
 >
 
+    <xsl:param name="global-param" as="xs:anyURI"/>
+
     <xsl:template name="main">
+        <xsl:message>GLOBAL PARAM: <xsl:value-of select="$global-param"/></xsl:message>
+
         <xsl:message>TEST FUNCTION</xsl:message>
 
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
@@ -69,6 +73,7 @@ version="2.0"
                         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
                             <xsl:call-template name="param-second-request-completed">
                                 <xsl:with-param name="some-value" select="$some-value"/>
+                                <xsl:with-param name="other-value" select="$global-param"/>
                             </xsl:call-template>
                         </ixsl:schedule-action>
                     </xsl:if>
@@ -83,6 +88,7 @@ version="2.0"
     <xsl:template name="param-second-request-completed">
         <xsl:context-item as="map(*)" use="required"/>
         <xsl:param name="some-value" as="xs:string"/>
+        <xsl:param name="other-value" as="xs:string"/>
 
         <xsl:message>PARAM $some-value: <xsl:value-of select="$some-value"/></xsl:message>
     </xsl:template>
