@@ -48,24 +48,30 @@ version="2.0"
     <xsl:template match="button[@id = 'test-param']" mode="ixsl:onclick">
         <xsl:message>TEST FUNCTION</xsl:message>
 
-        <xsl:variable name="some-value" select="'whatever'" as="xs:string"/>
-
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
-            <xsl:call-template name="param-request-completed">
-                <xsl:with-param name="some-value" select="$some-value"/>
-            </xsl:call-template>
+            <xsl:call-template name="param-request-completed"/>
         </ixsl:schedule-action>
     </xsl:template>
 
     <xsl:template name="param-request-completed">
         <xsl:context-item as="map(*)" use="required"/>
-        <xsl:param name="some-value" as="xs:string"/>
 
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
-            <xsl:call-template name="param-second-request-completed">
-                <xsl:with-param name="some-value" select="$some-value"/>
-            </xsl:call-template>
-        </ixsl:schedule-action>
+        <xsl:choose>
+            <xsl:when test="?status = 200 and ?media-type = 'application/rdf+xml'">
+                <xsl:for-each select="?body">
+                    <xsl:variable name="some-value" select="/note/to" as="xs:string"/>
+
+                    <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
+                        <xsl:call-template name="param-second-request-completed">
+                            <xsl:with-param name="some-value" select="$some-value"/>
+                        </xsl:call-template>
+                    </ixsl:schedule-action>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ ?message ])"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="param-second-request-completed">
