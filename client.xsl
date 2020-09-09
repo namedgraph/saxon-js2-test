@@ -95,4 +95,10 @@ version="2.0"
         <xsl:message>PARAM $other-value: <xsl:value-of select="$other-value"/></xsl:message>
     </xsl:template>
 
+    <!-- ONBLUR -->
+
+    <xsl:template match="input[tokenize(@class, ' ') = 'typeahead']" mode="ixsl:onblur">
+        <xsl:sequence select="ixsl:call(ixsl:window(), 'alert', [ 'typeahead blur' ])"/>
+    </xsl:template>
+
 </xsl:stylesheet>
