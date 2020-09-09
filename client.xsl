@@ -102,4 +102,11 @@ version="2.0"
         <xsl:sequence select="ixsl:call(ixsl:window(), 'alert', [ 'typeahead blur' ])"/>
     </xsl:template>
 
+    <!-- ONSUBMIT -->
+
+    <xsl:template match="form" mode="ixsl:onsubmit">
+        <xsl:message>FORM ONSUBMIT!</xsl:message>
+        <xsl:sequence select="ixsl:call(ixsl:window(), 'alert', [ 'form submit' ])"/>
+    </xsl:template>
+
 </xsl:stylesheet>
