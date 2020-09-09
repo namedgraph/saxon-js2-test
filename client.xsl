@@ -98,6 +98,7 @@ version="2.0"
     <!-- ONBLUR -->
 
     <xsl:template match="input[tokenize(@class, ' ') = 'typeahead']" mode="ixsl:onblur">
+        <xsl:message>TYPEAHEAD ONBLUR!</xsl:message>
         <xsl:sequence select="ixsl:call(ixsl:window(), 'alert', [ 'typeahead blur' ])"/>
     </xsl:template>
 
