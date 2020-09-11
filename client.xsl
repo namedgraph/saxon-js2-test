@@ -106,6 +106,8 @@ version="2.0"
 
     <xsl:template match="form" mode="ixsl:onsubmit">
         <xsl:message>FORM ONSUBMIT!</xsl:message>
+
+        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
         <xsl:sequence select="ixsl:call(ixsl:window(), 'alert', [ 'form submit' ])"/>
     </xsl:template>
 
