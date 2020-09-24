@@ -126,7 +126,7 @@ version="2.0"
         <xsl:variable name="response" select="ixsl:get($event, 'detail')"/>
 
         <xsl:message>
-            RESPONSE: <xsl:value-of select="$response"/>
+            RESPONSE URL: <xsl:value-of select="ixsl:get($response, 'url')"/>
         </xsl:message>
     </xsl:template>
 
