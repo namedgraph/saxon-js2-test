@@ -117,7 +117,7 @@ version="2.0"
     <xsl:template match="button[@id = 'custom-handler']" mode="ixsl:onclick">
         <xsl:message>CUSTOM HANDLER BUTTON</xsl:message>
 
-        <xsl:sequence select="js:customFetch(.)"/>
+        <xsl:sequence select="js:customFetch(., 'test.xml')"/>
     </xsl:template>
 
     <xsl:template match="." mode="ixsl:oncustomEvent">

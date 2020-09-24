@@ -1,6 +1,6 @@
-var customFetch = function(elem)
+var customFetch = function(elem, url)
 {
-	fetch("text.xml").
+	fetch(url).
 	then(function(response) {
 		let event = new CustomEvent("customEvent", { "detail": { response } });
 		// no need to add event listeners here, that is done by IXSL
