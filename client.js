@@ -6,3 +6,4 @@ var customFetch = function(elem, url)
 		// no need to add event listeners here, that is done by IXSL
 		document.dispatchEvent(event);
 	});
+}
