@@ -124,7 +124,10 @@ version="2.0"
         <xsl:message>CUSTOM EVENT HANDLER</xsl:message>
         <xsl:variable name="event" select="ixsl:event()"/>
         <xsl:variable name="response" select="ixsl:get($event, 'detail')"/>
-
+        
+        <xsl:message>
+            RESPONSE AS STRING: <xsl:value-of select="ixsl:call(ixsl:get(ixsl:window(), 'JSON'), 'stringify', [ $response ])"/>
+        </xsl:message>
         <xsl:message>
             RESPONSE URL: <xsl:value-of select="ixsl:get($response, 'url')"/>
         </xsl:message>
