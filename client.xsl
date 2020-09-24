@@ -117,11 +117,17 @@ version="2.0"
     <xsl:template match="button[@id = 'custom-handler']" mode="ixsl:onclick">
         <xsl:message>CUSTOM HANDLER BUTTON</xsl:message>
 
-        <xsl:sequence select="ixsl:call(js:fetch('test.xml'), 'then', [ ixsl:get(ixsl:window(), 'oncustomHandler') ])"/>
+        <xsl:sequence select="js:customFetch(.)"/>
     </xsl:template>
 
-    <xsl:template match="." mode="ixsl:oncustomHandler">
-        <xsl:message>CUSTOM HANDLER CALLBACK</xsl:message>
+    <xsl:template match="." mode="ixsl:oncustomEvent">
+        <xsl:message>CUSTOM EVENT HANDLER</xsl:message>
+        <xsl:variable name="event" select="ixsl:event()"/>
+        <xsl:variable name="response" select="ixsl:get($event, 'detail')"/>
+
+        <xsl:message>
+            RESPONSE: <xsl:value-of select="$response"/>
+        </xsl:message>
     </xsl:template>
 
 </xsl:stylesheet>
