@@ -144,4 +144,15 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
+    <xsl:template match="button[@id = 'push-state-js']" mode="ixsl:onclick">
+        <xsl:variable name="js-statement" as="element()">
+            <root statement="history.pushState({{ 'state': 'smth' }}, '')"/>
+        </xsl:variable>
+        <xsl:sequence select="ixsl:eval(string($js-statement/@statement))[9999999999]"/>
+
+        <xsl:message>
+            HISTORY LENGTH: <xsl:value-of select="ixsl:get(ixsl:window(), 'history.length')"/>
+        </xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
