@@ -5,10 +5,13 @@ xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT"
 xmlns:ac="https://w3id.org/atomgraph/client#"
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:js="http://saxonica.com/ns/globalJS"
+xmlns:c="https://www.w3.org/ns/ldt/core/domain#"
 exclude-result-prefixes="#all"
 extension-element-prefixes="ixsl"
 version="2.0"
 >
+
+    <xsl:import href="import.xsl"/>
 
     <xsl:param name="global-param" as="xs:anyURI"/>
 
