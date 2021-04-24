@@ -23,7 +23,7 @@
                     <button type="button">Click me!</button>
                 </p>
                 <p>
-                    <a href="test-pi.xsl">Client-side stylesheet</a>
+                    <a href="test-pi.xsl">Client-side stylesheet</a>. Implemented for the <a href="https://www.saxonica.com/saxon-js/">Saxon-JS 2</a> processor.
                 </p>
                 <dl>
                     <xsl:apply-templates/>
