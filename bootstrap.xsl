@@ -22,6 +22,9 @@
                 <p>
                     <button type="button">Click me!</button>
                 </p>
+                <p>
+                    <a href="test-pi.xsl">Client-side stylesheet</a>
+                </p>
                 <dl>
                     <xsl:apply-templates/>
                 </dl>
