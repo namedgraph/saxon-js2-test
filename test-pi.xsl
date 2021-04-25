@@ -11,6 +11,10 @@ extension-element-prefixes="ixsl"
 version="2.0"
 >
 
+    <xsl:template name="main">
+        <xsl:message>"main" template invoked</xsl:message>
+    </xsl:template>
+
     <xsl:template match="button" mode="ixsl:onclick">
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Hello from Saxon-JS' ])"/>
     </xsl:template>
