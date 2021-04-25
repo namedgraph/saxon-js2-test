@@ -25,7 +25,7 @@
                     window.onload = function() {
                         console.log(SaxonJS.getProcessorInfo().productName + " " +
                         SaxonJS.getProcessorInfo().productVersion + " " + SaxonJS.getProcessorInfo().releaseDate);
-                        SaxonJS.XPath.evaluate('transform(map{ "stylesheet-location": "test-pi.xsl", "initial-template: "main" })');
+                        SaxonJS.XPath.evaluate('transform(map{ "stylesheet-location": "test-pi.xsl", "initial-template": "main" })');
                     }
                 ]]>
             </script>
