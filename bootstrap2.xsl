@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+    <xsl:output method="html"/>
+
     <xsl:template match="/note">
         <html>
             <script type="text/javascript" src="SaxonJS2.rt.js"></script>
-            <script type="text/javascript">
+<!--             <script type="text/javascript">
                 <![CDATA[
                     window.onload = function() {
                         console.log(SaxonJS.getProcessorInfo().productName + " " +
@@ -15,6 +17,15 @@
                            logLevel: 2
                         },
                         "async");
+                    }
+                ]]>
+            </script> -->
+            <script type="text/javascript">
+                <![CDATA[
+                    window.onload = function() {
+                        console.log(SaxonJS.getProcessorInfo().productName + " " +
+                        SaxonJS.getProcessorInfo().productVersion + " " + SaxonJS.getProcessorInfo().releaseDate);
+                        SaxonJS.XPath.evaluate('transform(map{ "stylesheet-location": "test-pi.xsl", "initial-template: "main" }');
                     }
                 ]]>
             </script>
