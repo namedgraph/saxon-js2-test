@@ -5,7 +5,7 @@
 
     <xsl:template match="/note">
         <html>
-            <script type="text/javascript" src="SaxonJS2.rt.js"></script>
+            <script type="text/javascript" src="SaxonJS2.js"></script>
 <!--             <script type="text/javascript">
                 <![CDATA[
                     window.onload = function() {
