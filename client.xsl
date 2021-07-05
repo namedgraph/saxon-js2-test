@@ -174,14 +174,10 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'class-key']" mode="ixsl:onclick">
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'loaded.xhtml', 'headers': map{ 'Accept': 'application/xhtml+xml' } }">
-            <xsl:call-template name="replace-template"/>
-        </ixsl:schedule-action>
+        <xsl:call-template name="replace-template"/>
     </xsl:template>
 
     <xsl:template name="replace-template">
-        <xsl:context-item as="map(*)" use="required"/>
-
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
             <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
