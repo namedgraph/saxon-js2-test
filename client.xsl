@@ -162,7 +162,7 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
-    <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
+    <xsl:template match="button[@id = 'class-key']" mode="ixsl:onclick">
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'loaded.xhtml', 'headers': map{ 'Accept': 'application/xhtml+xml' } }">
             <xsl:call-template name="replace-template"/>
         </ixsl:schedule-action>
