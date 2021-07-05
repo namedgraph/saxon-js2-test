@@ -23,6 +23,8 @@ version="2.0"
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
             <xsl:call-template name="param-request-completed"/>
         </ixsl:schedule-action>
+
+        <xsl:call-template name="append-template"/>
     </xsl:template>
 
     <!-- test <xsl:call-template> invokation from ac:test() -->
@@ -162,11 +164,15 @@ version="2.0"
         <xsl:for-each select="id('old-div')/..">
             <xsl:result-document href="?." method="ixsl:replace-content">
                 <div id="new-div">
-                    <xsl:for-each select="1 to 1000">NEW CONTENT</xsl:for-each>
+                    NEW CONTENT
                 </div>
             </xsl:result-document>
         </xsl:for-each>
 
+        <xsl:call-template name="append-template"/>
+    </xsl:template>
+
+    <xsl:template name="append-template">
         <xsl:for-each select="id('new-div', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 <div>CONTENT APPENDED TO NEW CONTENT</div>
