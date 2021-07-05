@@ -159,13 +159,13 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
-        <xsl:variable name="div-id" select="'some-id'" as="xs:string"/>
+        <xsl:variable name="appended-id" select="'appended-id'" as="xs:string"/>
 
-        <xsl:result-document href="#{$div-id}" method="ixsl:append-content">
-            <div>APPENDED CONTENT</div>
+        <xsl:result-document href="#some-id" method="ixsl:append-content">
+            <div id="{$appended-id}">APPENDED CONTENT</div>
         </xsl:result-document>
 
-        <xsl:for-each select="id($div-id, ixsl:page())">
+        <xsl:for-each select="id($appended-id, ixsl:page())">
             <ixsl:set-style name="background-color" select="'red'" object="."/>
         </xsl:for-each>
     </xsl:template>
