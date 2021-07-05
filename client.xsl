@@ -172,17 +172,18 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
 
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
-            <xsl:copy-of select="id('content-body', ?body)/*"/>
+            <xsl:copy-of select="id('abc', ?body)/*"/>
         </xsl:result-document>
 
         <xsl:call-template name="append-template"/>
     </xsl:template>
 
     <xsl:template name="append-template">
-        <xsl:for-each select="key('elements-by-class', 'resource-content', ixsl:page())">
-            <xsl:result-document href="?." method="ixsl:append-content">
-                <div>CONTENT APPENDED TO NEW CONTENT</div>
-            </xsl:result-document>
+        <xsl:for-each select="id('abc', ixsl:page())">
+            <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @id' ])"/>
+        </xsl:for-each>
+        <xsl:for-each select="key('elements-by-class', 'some-class', ixsl:page())">
+            <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @class' ])"/>
         </xsl:for-each>
     </xsl:template>
 
