@@ -160,7 +160,7 @@ version="2.0"
 
     <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
         <xsl:for-each select="id('old-div')/..">
-            <xsl:result-document href="?.." method="ixsl:replace-content">
+            <xsl:result-document href="?." method="ixsl:replace-content">
                 <div id="new-div">NEW CONTENT</div>
             </xsl:result-document>
         </xsl:for-each>
