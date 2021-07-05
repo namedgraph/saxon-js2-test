@@ -167,7 +167,7 @@ version="2.0"
     <xsl:template name="replace-template">
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
             <div id="new-div">
-                NEW CONTENT
+                <xsl:for-each select="1 to 10000">NEW CONTENT</xsl:for-each>
             </div>
         </xsl:result-document>
 
