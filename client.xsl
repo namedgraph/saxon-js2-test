@@ -174,10 +174,6 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'class-key']" mode="ixsl:onclick">
-        <xsl:call-template name="replace-template"/>
-    </xsl:template>
-
-    <xsl:template name="replace-template">
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
             <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
