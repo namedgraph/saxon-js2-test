@@ -159,7 +159,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
-        <xsl:variable name="div-id" select="'result-page'" as="xs:string"/>
+        <xsl:variable name="div-id" select="'some-id'" as="xs:string"/>
 
         <xsl:result-document href="#{$div-id}" method="ixsl:append-content">
             <div>APPENDED CONTENT</div>
