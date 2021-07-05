@@ -17,6 +17,17 @@ version="2.0"
 
     <xsl:key name="elements-by-class" match="*" use="tokenize(@class, ' ')"/>
 
+    <xsl:variable name="xhtml" as="document-node()">
+        <xsl:document>
+            <html lang="en">
+               <head></head>
+               <body>
+                  <div id="abc" class="some-class"/>
+               </body>
+            </html>
+        </xsl:document>
+    </xsl:variable>
+
     <xsl:template name="main">
         <xsl:message>GLOBAL PARAM: <xsl:value-of select="$global-param"/></xsl:message>
 
@@ -172,7 +183,7 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
 
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
-            <xsl:copy-of select="?body//body/*"/>
+            <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
 
         <xsl:call-template name="append-template"/>
