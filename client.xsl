@@ -161,21 +161,23 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
-        <xsl:call-template name="replace-template"/>
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'loaded.xhtml', 'headers': map{ 'Accept': 'application/xhtml+xml' } }">
+            <xsl:call-template name="replace-template"/>
+        </ixsl:schedule-action>
     </xsl:template>
 
     <xsl:template name="replace-template">
+        <xsl:context-item as="map(*)" use="required"/>
+
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
-            <div id="new-div">
-                <xsl:for-each select="1 to 10000">NEW CONTENT</xsl:for-each>
-            </div>
+            <xsl:copy-of select="?body"/>
         </xsl:result-document>
 
         <xsl:call-template name="append-template"/>
     </xsl:template>
 
     <xsl:template name="append-template">
-        <xsl:for-each select="id('new-div', ixsl:page())">
+        <xsl:for-each select="id('d174e7', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 <div>CONTENT APPENDED TO NEW CONTENT</div>
             </xsl:result-document>

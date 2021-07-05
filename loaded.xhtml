@@ -1,0 +1,234 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <meta name="og:url" content="https://localhost:4443/"></meta>
+      <meta name="twitter:url" content="https://localhost:4443/"></meta>
+      <meta name="og:title" content="Root"></meta>
+      <meta name="twitter:title" content="Root"></meta>
+      <meta name="twitter:card" content="summary_large_image"></meta>
+      <meta name="description" content="Root container"></meta>
+      <meta property="og:description" content="Root container"></meta>
+      <meta name="twitter:description" content="Root container"></meta>
+      <meta property="og:site_name" content="LinkedDataHub"></meta>
+      <title>LinkedDataHub - Root</title>
+      <link href="https://localhost:4443/static/css/bootstrap.css" rel="stylesheet" type="text/css"></link>
+      <link href="https://localhost:4443/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"></link>
+      <link href="https://localhost:4443/static/com/atomgraph/client/css/bootstrap.css" rel="stylesheet" type="text/css"></link>
+      <link href="https://localhost:4443/static/com/atomgraph/linkeddatahub/css/bootstrap.css" rel="stylesheet" type="text/css"></link>
+      <link href="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/wymeditor/skins/default/skin.css" rel="stylesheet" type="text/css"></link><script type="text/javascript" src="https://localhost:4443/static/js/jquery.min.js" defer="defer"></script><script type="text/javascript" src="https://localhost:4443/static/js/bootstrap.js" defer="defer"></script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/client/js/UUID.js" defer="defer"></script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/jquery.js" defer="defer"></script><script type="text/javascript">
+            
+                var baseUri = "https://localhost:4443/";
+                var ontologyUri = "https://localhost:4443/ns#";
+                var contextUri = "https://localhost:4443/";
+                var agentUri = "https://localhost:4443/admin/acl/agents/07285883-4026-4502-8ed5-ae4c78ae9674/#this";
+                var accessModeUri = ["http://www.w3.org/ns/auth/acl#Read", "http://www.w3.org/ns/auth/acl#Read", "http://www.w3.org/ns/auth/acl#Control", "http://www.w3.org/ns/auth/acl#Append", "http://www.w3.org/ns/auth/acl#Write"];
+            
+        </script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/wymeditor/jquery.wymeditor.js" defer="defer"></script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/saxon-js/SaxonJS2.rt.js" defer="defer"></script><script type="text/javascript">
+                
+                    window.onload = function() {
+                        const locationMapping = [ 
+                            // not using entities as we don't want the # in the end
+                            { name: contextUri + "static/com/atomgraph/linkeddatahub/xsl/bootstrap/2.3.2/translations.rdf", altName: contextUri + "static/com/atomgraph/linkeddatahub/xsl/bootstrap/2.3.2/translations.rdf" },
+                            { name: "https://w3id.org/atomgraph/client", altName: baseUri + "?uri=" + encodeURIComponent("https://w3id.org/atomgraph/client") + "&amp;accept=" + encodeURIComponent("application/rdf+xml") },
+                            { name: "http://www.w3.org/1999/02/22-rdf-syntax-ns", altName: baseUri + "?uri=" + encodeURIComponent("http://www.w3.org/1999/02/22-rdf-syntax-ns") + "&amp;accept=" + encodeURIComponent("application/rdf+xml") }
+                            
+                            
+                            
+                        ];
+                        const docPromises = locationMapping.map(mapping =&gt; SaxonJS.getResource({location: mapping.altName, type: "xml"}));
+    
+                        Promise.all(docPromises)
+                        .then(resources =&gt; {
+                            const cache = {};
+                            for (var i = 0; i &lt; resources.length; i++) {
+                                cache[locationMapping[i].name] = resources[i]
+                            };
+                            return SaxonJS.transform({
+                                documentPool: cache,
+                                stylesheetLocation: "https://localhost:4443/static/com/atomgraph/linkeddatahub/xsl/client.xsl.sef.json",
+                                initialTemplate: "main",
+                                logLevel: 10,
+                                stylesheetParams: {
+                                    "Q{https://w3id.org/atomgraph/client#}contextUri": contextUri, // servlet context URI
+                                    "Q{https://www.w3.org/ns/ldt#}base": baseUri,
+                                    "Q{https://www.w3.org/ns/ldt#}ontology": ontologyUri,
+                                    "Q{http://www.w3.org/ns/auth/acl#}agent": agentUri,
+                                    "Q{http://www.w3.org/ns/auth/acl#}mode": accessModeUri
+                                    }
+                            }, "async");
+                        })
+                        .catch(err =&gt; console.log("Transformation failed: " + err));
+                    }
+                
+            </script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/SPARQLBuilder.js" defer="defer"></script><script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ4rt3EnNCmGTpBN0qoZM1Z_jXhUnrTpQ" defer="defer"></script><script type="text/javascript" src="https://localhost:4443/static/com/atomgraph/linkeddatahub/js/SPARQLMap.js" defer="defer"></script><script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript">
+                
+                    google.charts.load('current', {packages: ['corechart', 'table', 'timeline', 'map']});
+                
+            </script></head>
+   <body>
+      <div class="navbar navbar-fixed-top">
+         <div class="navbar-inner">
+            <div class="container-fluid"><button class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="brand" href="https://localhost:4443/">LinkedDataHub</a><div id="collapsing-top-navbar" class="nav-collapse collapse" style="margin-left: 17%;">
+                  <form action="https://localhost:4443/?uri=https%3A%2F%2Flocalhost%3A4443%2F" method="get" class="navbar-form pull-left" accept-charset="UTF-8" title="Search for resources by title, label, content etc.">
+                     <div class="input-append"><select id="search-service" name="service">
+                           <option value="">[SPARQL service]</option></select><input type="text" id="uri" name="uri" class="input-xxlarge typeahead"></input><button type="submit" class="btn btn-primary btn-search"></button></div>
+                  </form>
+                  <ul class="nav pull-right">
+                     <li><a href="?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23QueryEditorMode">SPARQL editor</a></li>
+                     <li>
+                        <div class="btn-group"><button type="button" title="Martynas Jusevicius"></button><ul class="dropdown-menu pull-right">
+                              <li></li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="navbar-inner action-bar">
+            <div class="container-fluid">
+               <div class="row-fluid">
+                  <div class="span2">
+                     <div class="btn-group pull-left"><button type="button" title="Create a new resource of selected type" class="btn btn-primary dropdown-toggle create-action">Create <span class="caret"></span></button><ul class="dropdown-menu">
+                           <ul>
+                              <ul>
+                                 <ul>
+                                    <ul>
+                                       <li><input type="hidden" class="forClass" value="https://w3id.org/atomgraph/linkeddatahub/domain#Content"></input><button type="button" title="https://w3id.org/atomgraph/linkeddatahub/domain#Content" class="btn add-constructor">Content<input type="hidden" class="forClass" value="https://w3id.org/atomgraph/linkeddatahub/domain#Content"></input></button></li>
+                                    </ul>
+                                 </ul>
+                              </ul>
+                           </ul>
+                           <li class="divider"></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/default#Container"></input><button type="button" title="https://localhost:4443/ns/domain/default#Container" class="btn add-constructor">Container<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/default#Container"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/default#Item"></input><button type="button" title="https://localhost:4443/ns/domain/default#Item" class="btn add-constructor">Item<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/default#Item"></input></button></li>
+                           <li class="divider"></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Ask"></input><button type="button" title="https://localhost:4443/ns/domain/system#Ask" class="btn add-constructor">ASK<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Ask"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Construct"></input><button type="button" title="https://localhost:4443/ns/domain/system#Construct" class="btn add-constructor">CONSTRUCT<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Construct"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#CSVImport"></input><button type="button" title="https://localhost:4443/ns/domain/system#CSVImport" class="btn add-constructor">CSV import<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#CSVImport"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Describe"></input><button type="button" title="https://localhost:4443/ns/domain/system#Describe" class="btn add-constructor">DESCRIBE<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Describe"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#DydraService"></input><button type="button" title="https://localhost:4443/ns/domain/system#DydraService" class="btn add-constructor">Dydra service<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#DydraService"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#File"></input><button type="button" title="https://localhost:4443/ns/domain/system#File" class="btn add-constructor">File<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#File"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#GenericService"></input><button type="button" title="https://localhost:4443/ns/domain/system#GenericService" class="btn add-constructor">Generic service<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#GenericService"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#GraphChart"></input><button type="button" title="https://localhost:4443/ns/domain/system#GraphChart" class="btn add-constructor">Graph chart<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#GraphChart"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#RDFImport"></input><button type="button" title="https://localhost:4443/ns/domain/system#RDFImport" class="btn add-constructor">RDF import<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#RDFImport"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#ResultSetChart"></input><button type="button" title="https://localhost:4443/ns/domain/system#ResultSetChart" class="btn add-constructor">Result set chart<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#ResultSetChart"></input></button></li>
+                           <li><input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Select"></input><button type="button" title="https://localhost:4443/ns/domain/system#Select" class="btn add-constructor">SELECT<input type="hidden" class="forClass" value="https://localhost:4443/ns/domain/system#Select"></input></button></li>
+                        </ul>
+                     </div>
+                     <div class="btn-group pull-left"><button type="button" title="Import RDF data" class="btn btn-primary add-data">Add data</button></div>
+                  </div>
+                  <div class="span7">
+                     <div id="result-counts"></div>
+                     <div id="breadcrumb-nav"></div>
+                  </div>
+                  <div class="span3">
+                     <div class="btn-group pull-right"><button type="button" title="Settings" class="btn dropdown-toggle btn-settings">Settings <span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a href="https://localhost:4443/admin/" target="_blank">
+                                 Administration
+                                 </a></li>
+                           <li><a href="https://localhost:4443/ns" target="_blank">Namespace</a></li>
+                           <li><a href="https://linkeddatahub.com/linkeddatahub/docs/" target="_blank">Documentation</a></li>
+                        </ul>
+                     </div>
+                     <div class="btn-group pull-right"><button type="button" title="Export RDF data for this response" class="btn dropdown-toggle btn-export">Export<span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a href="https://localhost:4443/?accept=application%2Frdf%2Bxml" title="application/rdf+xml">RDF/XML</a></li>
+                           <li><a href="https://localhost:4443/?accept=text%2Fturtle" title="text/turtle">Turtle</a></li>
+                           <li class="divider"></li>
+                           <li><a href="https://localhost:4443/?debug=http%3A%2F%2Fwww.w3.org%2Fns%2Fsparql-service-description%23SPARQL11Query" title="application/sparql-query">SPARQL query</a></li>
+                        </ul>
+                     </div>
+                     <div class="pull-right">
+                        <form action="https://localhost:4443/?_method=DELETE" method="post"><button type="submit" title="Delete the graph of this resource" class="btn btn-delete">Delete</button></form>
+                     </div>
+                     <div class="pull-right"><button title="Edit the graph of this resource" class="btn btn-edit">Edit<input type="hidden" value="https://localhost:4443/?mode=https%3A%2F%2Fw3id.org%2Fatomgraph%2Fclient%23EditMode"></input></button></div>
+                     <div class="pull-right">
+                        <form action="https://localhost:4443/?ban=true" method="post"><button type="submit" title="Clear the resource from SPARQL results cache" class="btn btn-ban">BAN resource from cache</button></form>
+                     </div>
+                     <div class="btn-group pull-right"><button type="button" title="Allowed access modes" class="btn dropdown-toggle btn-acl">Access <span class="caret"></span></button><ul class="dropdown-menu">
+                           <li><a title="http://www.w3.org/ns/auth/acl#Append">✔ append</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Control">✔ control</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Read">✔ read</a></li>
+                           <li><a title="http://www.w3.org/ns/auth/acl#Write">✔ write</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="content-body" class="container-fluid">
+         <div class="row-fluid">
+            <div class="left-nav span2"></div>
+            <div id="d174e7" class="content resource-content span7"><input name="href" type="hidden" value="https://localhost:4443/queries/default/select-geo-resources/#this"></input></div>
+            <div class="right-nav span3"></div>
+         </div>
+         <div class="row-fluid">
+            <div id="d174e11" class="content xhtml-content span7 offset2">
+               <div>
+                  <h2>Content</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada eget justo
+                     tempus dictum. In sed velit vel mauris pellentesque aliquet. Quisque nec nulla cursus
+                     dolor auctor laoreet in non justo. In varius porttitor luctus. Curabitur lobortis
+                     urna a nisl eleifend aliquet. Maecenas dignissim pellentesque metus vel tincidunt.
+                     Nam vehicula malesuada odio, ut iaculis sem aliquet in. Curabitur suscipit nisi non
+                     ante malesuada, non sodales ipsum lobortis. Praesent id porttitor ligula. Suspendisse
+                     efficitur rutrum enim in laoreet.</p>
+                  <p>Sed auctor pulvinar eros, quis hendrerit mi gravida sed. Vestibulum mollis rutrum
+                     leo, in pulvinar augue convallis id. Donec luctus tincidunt ultrices. Suspendisse
+                     sit amet gravida massa. Quisque ut velit finibus, luctus lorem nec, aliquet lectus.
+                     Nullam rhoncus metus in mattis congue. Integer vitae volutpat sem. Aenean cursus,
+                     lorem sed pellentesque accumsan, enim justo lacinia urna, sed ullamcorper augue nibh
+                     sed augue. Curabitur vel neque id sem imperdiet accumsan. Mauris sed iaculis eros.
+                     Pellentesque ac euismod ante, ac fringilla nibh. Nullam luctus blandit neque sit amet
+                     facilisis. Donec quis hendrerit felis. Duis efficitur ornare nisl.</p>
+               </div>
+            </div>
+         </div>
+         <div class="row-fluid">
+            <div class="left-nav span2"></div>
+            <div id="d175e88" class="content resource-content span7"><input name="href" type="hidden" value="https://localhost:4443/queries/default/select-children/#this"></input></div>
+            <div class="right-nav span3"></div>
+         </div>
+      </div>
+      <div class="footer container-fluid">
+         <div class="row-fluid">
+            <div class="offset2 span8">
+               <div class="span3">
+                  <h2 class="nav-header">About</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://linkeddatahub.com/linkeddatahub/docs/about/" target="_blank">LinkedDataHub</a></li>
+                     <li><a href="https://atomgraph.com" target="_blank">AtomGraph</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Resources</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://linkeddatahub.com/linkeddatahub/docs/" target="_blank">Documentation</a></li>
+                     <li><a href="https://www.youtube.com/channel/UCtrdvnVjM99u9hrjESwfCeg" target="_blank">Screencasts</a></li>
+                     <li><a href="https://linkeddatahub.com/demo/" target="_blank">Demo apps</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Support</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://groups.io/g/linkeddatahub" target="_blank">Mailing list</a></li>
+                     <li><a href="https://github.com/AtomGraph/LinkedDataHub/issues" target="_blank">Report issues</a></li>
+                     <li><a href="mailto:support@linkeddatahub.com">Contact support</a></li>
+                  </ul>
+               </div>
+               <div class="span3">
+                  <h2 class="nav-header">Follow us</h2>
+                  <ul class="nav nav-list">
+                     <li><a href="https://twitter.com/atomgraphhq" target="_blank">@atomgraphhq</a></li>
+                     <li><a href="https://github.com/AtomGraph" target="_blank">github.com/AtomGraph</a></li>
+                     <li><a href="https://www.facebook.com/AtomGraph" target="_blank">facebook.com/AtomGraph</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
