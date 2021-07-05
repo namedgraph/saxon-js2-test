@@ -158,4 +158,16 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
+    <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
+        <xsl:variable name="div-id" select="'result-page'" as="xs:string"/>
+
+        <xsl:result-document href="#{$div-id}" method="ixsl:append-content">
+            <div>APPENDED CONTENT</div>
+        </xsl:result-document>
+
+        <xsl:for-each select="id($div-id, ixsl:page())">
+            <ixsl:set-style name="background-color" select="'red'" object="."/>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
