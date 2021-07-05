@@ -170,7 +170,7 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
 
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
-            <xsl:copy-of select="?body"/>
+            <xsl:copy-of select="id('content-body', ?body)/*"/>
         </xsl:result-document>
 
         <xsl:call-template name="append-template"/>
