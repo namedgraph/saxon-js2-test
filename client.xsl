@@ -15,7 +15,7 @@ version="2.0"
 
     <xsl:param name="global-param" as="xs:anyURI"/>
 
-    <xsl:key name="elements-by-class" match="*" use="tokenize(@class, ' ')"/>
+    <xsl:key name="elements-by-class" match="*" use="@class"/>
 
     <xsl:variable name="xhtml" as="document-node()">
         <xsl:document>
@@ -37,7 +37,7 @@ version="2.0"
             <xsl:call-template name="param-request-completed"/>
         </ixsl:schedule-action>
 
-        <xsl:call-template name="append-template"/>
+        <xsl:call-template name="some-template"/>
     </xsl:template>
 
     <!-- test <xsl:call-template> invokation from ac:test() -->
@@ -178,10 +178,10 @@ version="2.0"
             <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
 
-        <xsl:call-template name="append-template"/>
+        <xsl:call-template name="some-template"/>
     </xsl:template>
 
-    <xsl:template name="append-template">
+    <xsl:template name="some-template">
         <xsl:for-each select="id('abc', ixsl:page())">
             <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @id' ])"/>
         </xsl:for-each>
