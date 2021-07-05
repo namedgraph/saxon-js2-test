@@ -178,16 +178,16 @@ version="2.0"
             <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
 
-        <xsl:call-template name="some-template"/>
-    </xsl:template>
-
-    <xsl:template name="some-template">
         <xsl:for-each select="id('abc', ixsl:page())">
             <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @id' ])"/>
         </xsl:for-each>
         <xsl:for-each select="key('elements-by-class', 'some-class', ixsl:page())">
             <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @class' ])"/>
         </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template name="some-template">
+
     </xsl:template>
 
 </xsl:stylesheet>
