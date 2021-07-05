@@ -166,7 +166,9 @@ version="2.0"
         </xsl:result-document>
 
         <xsl:for-each select="id($appended-id, ixsl:page())">
-            <ixsl:set-style name="background-color" select="'red'" object="."/>
+            <xsl:result-document href="?." method="ixsl:append-content">
+                <div>META-APPENDED CONTENT</div>
+            </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
 
