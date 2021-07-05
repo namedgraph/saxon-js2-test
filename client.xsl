@@ -159,15 +159,13 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'result-page']" mode="ixsl:onclick">
-        <xsl:variable name="appended-id" select="'appended-id'" as="xs:string"/>
-
-        <xsl:result-document href="#some-id" method="ixsl:append-content">
-            <div id="{$appended-id}">APPENDED CONTENT</div>
+        <xsl:result-document href="#old-div" method="ixsl:replace-content">
+            <div id="new-div">NEW CONTENT</div>
         </xsl:result-document>
 
-        <xsl:for-each select="id($appended-id, ixsl:page())">
+        <xsl:for-each select="id('new-div', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
-                <div>META-APPENDED CONTENT</div>
+                <div>CONTENT APPENDED TO NEW CONTENT</div>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
