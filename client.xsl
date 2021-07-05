@@ -15,6 +15,8 @@ version="2.0"
 
     <xsl:param name="global-param" as="xs:anyURI"/>
 
+    <xsl:key name="elements-by-class" match="*" use="tokenize(@class, ' ')"/>
+
     <xsl:template name="main">
         <xsl:message>GLOBAL PARAM: <xsl:value-of select="$global-param"/></xsl:message>
 
@@ -177,7 +179,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template name="append-template">
-        <xsl:for-each select="id('d174e7', ixsl:page())">
+        <xsl:for-each select="key('elements-by-class', 'resource-content', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 <div>CONTENT APPENDED TO NEW CONTENT</div>
             </xsl:result-document>
