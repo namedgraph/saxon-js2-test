@@ -173,21 +173,23 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
+    <!-- @CLASS KEY() -->
+
     <xsl:template match="button[@id = 'class-key']" mode="ixsl:onclick">
         <xsl:result-document href="#wrapper" method="ixsl:replace-content">
             <xsl:copy-of select="$xhtml//body/*"/>
         </xsl:result-document>
 
+        <xsl:call-template name="some-template"/>
+    </xsl:template>
+
+    <xsl:template name="some-template">
         <xsl:for-each select="id('abc', ixsl:page())">
             <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @id' ])"/>
         </xsl:for-each>
         <xsl:for-each select="key('elements-by-class', 'some-class', ixsl:page())">
             <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'Found by @class' ])"/>
         </xsl:for-each>
-    </xsl:template>
-
-    <xsl:template name="some-template">
-
     </xsl:template>
 
 </xsl:stylesheet>
