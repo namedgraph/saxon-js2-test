@@ -11,7 +11,7 @@ extension-element-prefixes="ixsl"
 version="2.0"
 >
 
-    <xsl:import href="import.xsl"/>
+    <!-- <xsl:import href="import.xsl"/> -->
 
     <xsl:param name="global-param" as="xs:anyURI"/>
 
