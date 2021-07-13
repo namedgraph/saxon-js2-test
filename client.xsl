@@ -192,4 +192,16 @@ version="2.0"
         </xsl:for-each>
     </xsl:template>
 
+    <!-- NEXT MATCH -->
+
+    <xsl:template match="button[@id = 'next-match']" mode="ixsl:onclick" priority="1">
+        <xsl:message>button[@id = 'next-match']</xsl:message>
+
+        <xsl:next-match/>
+    </xsl:template>
+
+    <xsl:template match="button[@class = 'whateverest']" mode="ixsl:onclick">
+        <xsl:message>button[@class = 'whateverest']</xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
