@@ -207,7 +207,7 @@ version="2.0"
     <!--EMPTY VALUE -->
 
     <xsl:template match="input[@id = 'empty-value']" mode="ixsl:onclick">
-        <xsl:message>ixsl:contains(., 'value'): <xsl:value-of select="ixsl:contains(., 'value')"/></xsl:message>
+        <xsl:message>ixsl:contains(., 'value'): <xsl:value-of select="ixsl:contains(., 'value')"/> ixsl:get(., 'value'): <xsl:value-of select="ixsl:get(., 'value')"/></xsl:message>
     </xsl:template>
 
 </xsl:stylesheet>
