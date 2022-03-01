@@ -215,7 +215,7 @@ version="2.0"
 
     <!-- CIRCULAR KEY -->
 
-    <xsl:template match="input[@id = 'circular-key']" mode="ixsl:onclick">
+    <xsl:template match="button[@id = 'circular-key']" mode="ixsl:onclick">
         <xsl:message>count(key('lines-by-start', @id, ixsl:page()) | key('lines-by-end', @id, ixsl:page())): <xsl:value-of select="key('lines-by-start', @id, ixsl:page()) | key('lines-by-end', @id, ixsl:page())"/></xsl:message>
     </xsl:template>
 
