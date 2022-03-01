@@ -6,6 +6,7 @@ xmlns:ac="https://w3id.org/atomgraph/client#"
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:js="http://saxonica.com/ns/globalJS"
 xmlns:c="https://www.w3.org/ns/ldt/core/domain#"
+xmlns:svg="http://www.w3.org/2000/svg"
 exclude-result-prefixes="#all"
 extension-element-prefixes="ixsl"
 version="2.0"
@@ -16,6 +17,8 @@ version="2.0"
     <xsl:param name="global-param" as="xs:anyURI"/>
 
     <xsl:key name="elements-by-class" match="*" use="@class"/>
+    <xsl:key name="lines-by-start" match="svg:line" use="@ac:id1"/>
+    <xsl:key name="lines-by-end" match="svg:line" use="@ac:id2"/>
 
     <xsl:variable name="xhtml" as="document-node()">
         <xsl:document>
@@ -208,6 +211,12 @@ version="2.0"
 
     <xsl:template match="input[@id = 'empty-value']" mode="ixsl:onclick">
         <xsl:message>ixsl:contains(., 'value'): <xsl:value-of select="ixsl:contains(., 'value')"/> ixsl:get(., 'value'): <xsl:value-of select="ixsl:get(., 'value')"/></xsl:message>
+    </xsl:template>
+
+    <!-- CIRCULAR KEY -->
+
+    <xsl:template match="input[@id = 'circular-key']" mode="ixsl:onclick">
+        <xsl:message>count(key('lines-by-start', @id, ixsl:page()) | key('lines-by-end', @id, ixsl:page())): <xsl:value-of select="key('lines-by-start', @id, ixsl:page()) | key('lines-by-end', @id, ixsl:page())"/></xsl:message>
     </xsl:template>
 
 </xsl:stylesheet>
