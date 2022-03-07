@@ -226,11 +226,15 @@ version="2.0"
     <!-- SVG EVENTS -->
 
     <xsl:template match="svg:circle" mode="ixsl:onclick">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'onclick' ])"/>
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'svg:circle onclick' ])"/>
     </xsl:template>
 
     <xsl:template match="svg:circle" mode="ixsl:ondrag">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'ondrag' ])"/>
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'svg:circle ondrag' ])"/>
+    </xsl:template>
+
+    <xsl:template match="p" mode="ixsl:ondrag">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrag' ])"/>
     </xsl:template>
 
 </xsl:stylesheet>
