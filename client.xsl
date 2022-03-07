@@ -215,13 +215,13 @@ version="2.0"
 
     <!-- CIRCULAR KEY -->
 
-    <xsl:template match="button[@id = 'circular-key']" mode="ixsl:onclick">
+<!--     <xsl:template match="button[@id = 'circular-key']" mode="ixsl:onclick">
         <xsl:message>
             <xsl:for-each select="key('lines-by-start', @id, ixsl:page()) | key('lines-by-end', @id, ixsl:page())">
                 <xsl:copy-of select="."/>
             </xsl:for-each>
         </xsl:message>
-    </xsl:template>
+    </xsl:template> -->
 
     <!-- SVG EVENTS -->
 
