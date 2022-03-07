@@ -223,4 +223,14 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
+    <!-- SVG EVENTS -->
+
+    <xsl:template match="svg:circle" mode="ixsl:onclick">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'onclick' ])"/>
+    </xsl:template>
+
+    <xsl:template match="svg:circle" mode="ixsl:ondrag">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'ondrag' ])"/>
+    </xsl:template>
+
 </xsl:stylesheet>
