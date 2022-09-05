@@ -16,20 +16,25 @@
                             { name: "http://www.w3.org/1999/02/22-rdf-syntax-ns", altName: "test.xml" }
                         ];
                         const docPromises = locationMapping.map(mapping => SaxonJS.getResource({location: mapping.altName, type: "xml"}));
-                        const cache = {};
-                        for (var i = 0; i < resources.length; i++) {
-                            cache[locationMapping[i].name] = resources[i]
-                        };
 
-                       SaxonJS.transform({
-                          documentPool: cache,
-                          stylesheetLocation: "client.xsl.sef.json",
-                          initialTemplate: "main",
-                          stylesheetParams: {
-                                "global-param": "whatever"
-                                },
-                          logLevel: 10
-                       }, "async");
+					    Promise.all(docPromises).then(resources =>
+						    const cache = {};
+						    for (var i = 0; i < resources.length; i++) {
+							   cache[locationMapping[i].name] = resources[i]
+						   };
+
+						   SaxonJS.transform({
+							  documentPool: cache,
+							  stylesheetLocation: "client.xsl.sef.json",
+							  initialTemplate: "main",
+							  stylesheetParams: {
+									"global-param": "whatever"
+									},
+							  logLevel: 10
+						   }, "async");
+						)
+						.then(res => console.log('Initial transformation successful.'))
+						.catch(err => console.log('Initial transformation failed.', err))
                     }
                 
             </script>
