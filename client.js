@@ -8,7 +8,7 @@ var customFetch = function(elem, url)
 	});
 }
 
-var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesheetParams, templateParams, event)
+var ixslTemplateListener = function(stylesheetLocation, initialTemplate, event)
 {
 	console.log("ixslTemplateListener event", event);
 
@@ -17,7 +17,7 @@ var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesh
     SaxonJS.transform({
         "stylesheetLocation": stylesheetLocation,
         "initialTemplate": initialTemplate,
-        "stylesheetParams": stylesheetParams,
-        "templateParams": templateParams
+        //"stylesheetParams": stylesheetParams,
+        //"templateParams": templateParams
     }, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
 };
