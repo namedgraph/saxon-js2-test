@@ -243,6 +243,7 @@ version="2.0"
         <xsl:message>
             <xsl:copy-of select="document('http://www.w3.org/1999/02/22-rdf-syntax-ns')"/> <!-- URL mapped to test.xml in documentPool -->
         </xsl:message>
+        <xsl:message>path(): <xsl:value-of select="path()"/></xsl:message>
     </xsl:template>
 
     <xsl:template match="button[@id = 'add-listener']" mode="ixsl:onclick">
