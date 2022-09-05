@@ -8,16 +8,18 @@ var customFetch = function(elem, url)
 	});
 }
 
-var ixslTemplateListener = function(stylesheetLocation, initialTemplate, event)
+var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesheetParams, templateParams, event)
 {
 	console.log("ixslTemplateListener event", event);
 
     templateParams.event = event;
 
-    SaxonJS.transform({
+	var options = {
         "stylesheetLocation": stylesheetLocation,
-        "initialTemplate": initialTemplate,
-        //"stylesheetParams": stylesheetParams,
-        //"templateParams": templateParams
-    }, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
+        "initialTemplate": initialTemplate
+    };
+	if (stylesheetParams) options.stylesheetParams = stylesheetParams;
+	if (templateParams) options.templateParams = templateParams;
+
+    SaxonJS.transform(options, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
 };

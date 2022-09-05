@@ -247,8 +247,13 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'add-listener']" mode="ixsl:onclick">
+        <xsl:variable as="element()" name="js-statement">
+            <root statement="{{ }}"></root>
+        </xsl:variable>
+        <xsl:variable name="stylesheet-params" select="ixsl:eval(string($js-statement/@statement))"/>
+        <xsl:variable name="template-params" select="ixsl:eval(string($js-statement/@statement))"/>
         <!-- ixslTemplateListener is in client.js -->
-        <xsl:variable name="js-function" select="ixsl:call(ixsl:get(ixsl:window(), 'ixslTemplateListener'), 'bind', [ (), static-base-uri(), 'onClickTemplate' ])"/>
+        <xsl:variable name="js-function" select="ixsl:call(ixsl:get(ixsl:window(), 'ixslTemplateListener'), 'bind', [ (), static-base-uri(), 'onClickTemplate', $stylesheet-params, $template-params ])"/>
         <xsl:sequence select="ixsl:call(id('onclick-listener', ixsl:page()), 'addEventListener', [ 'click', $js-function ])[current-date() lt xs:date('2000-01-01')]"></xsl:sequence>
     </xsl:template>
 
@@ -257,8 +262,18 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'onclick-call']" mode="ixsl:onclick">
+        <xsl:variable as="element()" name="js-statement">
+            <root statement="{{ }}"></root>
+        </xsl:variable>
+        <xsl:variable name="stylesheet-params" select="ixsl:eval(string($js-statement/@statement))"/>
+        <xsl:variable name="template-params" select="ixsl:eval(string($js-statement/@statement))"/>
         <!-- ixslTemplateListener is in client.js -->
-        <xsl:sequence select="js:ixslTemplateListener(static-base-uri(), 'onClickTemplate', ())[current-date() lt xs:date('2000-01-01')]"/>
+        <xsl:sequence select="js:ixslTemplateListener(static-base-uri(), 'onClickTemplate', $stylesheet-params, $template-params, ())[current-date() lt xs:date('2000-01-01')]"/>
+    </xsl:template>
+
+    <xsl:template match="button[@id = 'onclick-call-without-params']" mode="ixsl:onclick">
+        <!-- ixslTemplateListener is in client.js -->
+        <xsl:sequence select="js:ixslTemplateListener(static-base-uri(), 'onClickTemplate', (), (), ())[current-date() lt xs:date('2000-01-01')]"/>
     </xsl:template>
 
 </xsl:stylesheet>
