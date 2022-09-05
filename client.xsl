@@ -267,7 +267,7 @@ version="2.0"
         <xsl:variable name="stylesheet-params" select="ixsl:eval(string($js-statement/@statement))"/>
         <xsl:variable name="template-params" select="ixsl:eval(string($js-statement/@statement))"/>
         <!-- ixslTemplateListener is in client.js -->
-        <xsl:sequence select="ixsl:call(ixsl:window(), 'ixslTemplateListener', [ static-base-uri(), 'onClickTemplate', $stylesheet-params, $template-params, () ])[current-date() lt xs:date('2000-01-01')]"/>
+        <xsl:sequence select="js:ixslTemplateListener(static-base-uri(), 'onClickTemplate', $stylesheet-params, $template-params, ())[current-date() lt xs:date('2000-01-01')]"/>
     </xsl:template>
 
 </xsl:stylesheet>

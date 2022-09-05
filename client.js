@@ -18,7 +18,6 @@ var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesh
         "stylesheetLocation": stylesheetLocation,
         "initialTemplate": initialTemplate,
         "stylesheetParams": stylesheetParams,
-        "templateParams": templateParams,
-        "destination": 'appendToBody'
+        "templateParams": templateParams
     }, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
 };
