@@ -8,11 +8,21 @@
   <meta name="Description" content="">
   <title>Document</title>
   <script type="text/javascript" src="client.js"></script>
-  <script type="text/javascript" src="SaxonJS2.rt.js"></script>
+  <script type="text/javascript" src="SaxonJS2.js"></script>
   <script type="text/javascript">
                 
                     window.onload = function() {
+                        const locationMapping = [ 
+                            { name: "http://www.w3.org/1999/02/22-rdf-syntax-ns", altName: "test.xml" }
+                        ];
+                        const docPromises = locationMapping.map(mapping => SaxonJS.getResource({location: mapping.altName, type: "xml"}));
+                        const cache = {};
+                        for (var i = 0; i < resources.length; i++) {
+                            cache[locationMapping[i].name] = resources[i]
+                        };
+
                        SaxonJS.transform({
+                          documentPool: cache,
                           stylesheetLocation: "client.xsl.sef.json",
                           initialTemplate: "main",
                           stylesheetParams: {
@@ -62,15 +72,20 @@
     </p>
 <!--     <p>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:ac="https://w3id.org/atomgraph/client#">
-    			<line ac:id1="circular-key" ac:id2="circular-key"/>
-    		</svg>
+                <line ac:id1="circular-key" ac:id2="circular-key"/>
+            </svg>
     </p> -->
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" >
-			<circle r="15" cx="100" cy="100" fill="hsl(136.71448727240306, 50%, 70%)" stroke="gray" stroke-width="1">
-				<title>A14</title>
+            <circle r="15" cx="100" cy="100" fill="hsl(136.71448727240306, 50%, 70%)" stroke="gray" stroke-width="1">
+                <title>A14</title>
             </circle>
-		</svg>
+        </svg>
     </p>
+	<p>
+		<button id="load-mapped-doc">Load mapped document</button>
+		<button id="add-listener">Add listener</button>
+		<button id="onclick-listener">Onclick listener</button>
+	</p>
  </body>
 </html>

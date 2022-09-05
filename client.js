@@ -7,3 +7,15 @@ var customFetch = function(elem, url)
 		document.dispatchEvent(event);
 	});
 }
+
+var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesheetParams, templateParams, event)
+{
+    templateParams.event = event;
+
+    SaxonJS.transform({
+        "stylesheetLocation": stylesheetLocation,
+        "initialTemplate": initialTemplate,
+        "stylesheetParams": stylesheetParams,
+        "templateParams": templateParams
+    }, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
+};

@@ -237,4 +237,26 @@ version="2.0"
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrag' ])"/>
     </xsl:template>
 
+    <!-- SECONDARY TRANSFORMATION -->
+
+    <xsl:template match="button[@id = 'load-mapped-doc']" mode="ixsl:onclick">
+        <xsl:message>
+            <xsl:copy-of select="document('http://www.w3.org/1999/02/22-rdf-syntax-ns')"/> <!-- URL mapped to test.xml in documentPool -->
+        </xsl:message>
+    </xsl:template>
+
+    <xsl:template match="button[@id = 'add-listener']" mode="ixsl:onclick">
+        <xsl:variable as="element()" name="js-statement">
+            <root statement="{{ }}"></root>
+        </xsl:variable>
+        <xsl:variable name="stylesheet-params" select="ixsl:eval(string($js-statement/@statement))"></xsl:variable>
+        <xsl:variable name="template-params" select="ixsl:eval(string($js-statement/@statement))()"></xsl:variable>
+        <xsl:variable name="js-function" select="ixsl:call(ixsl:get(ixsl:window(), 'ixslTemplateListener'), 'bind', [ (), static-base-uri(), 'onMapMarkerClick', $stylesheet-params, $template-params ])"></xsl:variable>
+        <xsl:sequence select="ixsl:call(id('onclick-listener', ixsl:page()), 'addEventListener', [ 'click', $js-function ])[current-date() lt xs:date('2000-01-01')]"></xsl:sequence>
+    </xsl:template>
+
+    <xsl:template name="onDoubleClick">
+        <xsl:message>onDoubleClick</xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
