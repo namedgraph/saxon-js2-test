@@ -10,7 +10,8 @@ var customFetch = function(elem, url)
 
 var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesheetParams, templateParams, event)
 {
-	console.log("JS onclick event", event);
+	console.log("ixslTemplateListener event", event);
+
     templateParams.event = event;
 
     SaxonJS.transform({
