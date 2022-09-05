@@ -17,7 +17,7 @@
                         ];
                         const docPromises = locationMapping.map(mapping => SaxonJS.getResource({location: mapping.altName, type: "xml"}));
 
-					    Promise.all(docPromises).then(resources =>
+					    Promise.all(docPromises).then(resources => {
 						    const cache = {};
 						    for (var i = 0; i < resources.length; i++) {
 							   cache[locationMapping[i].name] = resources[i]
@@ -32,7 +32,7 @@
 									},
 							  logLevel: 10
 						   }, "async");
-						)
+						})
 						.then(res => console.log('Initial transformation successful.'))
 						.catch(err => console.log('Initial transformation failed.', err))
                     }
