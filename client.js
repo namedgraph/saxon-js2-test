@@ -21,5 +21,7 @@ var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesh
 	if (stylesheetParams) options.stylesheetParams = stylesheetParams;
 	if (templateParams) options.templateParams = templateParams;
 
+	console.log("SaxonJS options: ", JSON.stringify(options));
+
     SaxonJS.transform(options, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
 };
