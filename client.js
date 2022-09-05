@@ -12,14 +12,10 @@ var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesh
 {
 	console.log("ixslTemplateListener event", event);
 
-    templateParams.event = event;
-
 	var options = {
         "stylesheetLocation": stylesheetLocation,
         "initialTemplate": initialTemplate
     };
-
-	console.log("SaxonJS options: ", JSON.stringify(options));
 
 	if (stylesheetParams) options.stylesheetParams = stylesheetParams;
 	if (templateParams) options.templateParams = templateParams;
