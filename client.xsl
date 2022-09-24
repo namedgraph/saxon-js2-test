@@ -288,6 +288,21 @@ version="2.0"
         </xsl:for-each>
 
         <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/>
+        <xsl:call-template name="add-options">
+            <xsl:with-param name="container" select="$container"/>
+        </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template match="button[@id = 'look-up-created-element-in-schedule-action']" mode="ixsl:onclick">
+        <xsl:variable name="select-id" select="'select-in-container'" as="xs:string"/>
+
+        <xsl:for-each select="id('container', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:replace-content">
+                <select id="{$select-id}"/>
+            </xsl:result-document>
+        </xsl:for-each>
+
+        <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/>
         <ixsl:schedule-action wait="0">
             <xsl:call-template name="add-options">
                 <xsl:with-param name="container" select="$container"/>
@@ -299,6 +314,7 @@ version="2.0"
         <xsl:param name="container" as="element()"/>
         <xsl:for-each select="$container">
             <xsl:result-document href="?." method="ixsl:append-content">
+                <xsl:message>Adding options</xsl:message>
                 <option>A</option>
                 <option>B</option>
             </xsl:result-document>
