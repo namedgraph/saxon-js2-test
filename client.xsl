@@ -279,9 +279,18 @@ version="2.0"
     <!-- LOOKING UP CREATING ELEMENT -->
 
     <xsl:template match="button[@id = 'look-up-created-element']" mode="ixsl:onclick">
+        <xsl:variable name="select-id" select="'select-in-container'" as="xs:string"/>
+
         <xsl:for-each select="id('container', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:replace-content">
-                <select/>
+                <select id="{$select-id}"/>
+            </xsl:result-document>
+        </xsl:for-each>
+
+        <xsl:for-each select="id($select-id, ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                <option>A</option>
+                <option>B</option>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
