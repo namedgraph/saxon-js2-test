@@ -302,12 +302,14 @@ version="2.0"
             </xsl:result-document>
         </xsl:for-each>
 
-        <!-- <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/> -->
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
-            <xsl:call-template name="add-options">
-                <xsl:with-param name="container" select="id($select-id, ixsl:page())"/>
-            </xsl:call-template>
-        </ixsl:schedule-action>
+        <xsl:for-each select="1 to 5">
+            <!-- <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/> -->
+            <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
+                <xsl:call-template name="add-options">
+                    <xsl:with-param name="container" select="id($select-id, ixsl:page())"/>
+                </xsl:call-template>
+            </ixsl:schedule-action>
+        </xsl:for-each>
     </xsl:template>
 
     <xsl:template name="add-options">
