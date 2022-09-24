@@ -287,9 +287,10 @@ version="2.0"
             </xsl:result-document>
         </xsl:for-each>
 
+        <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/>
         <ixsl:schedule-action wait="0">
             <xsl:call-template name="add-options">
-                <xsl:with-param name="container" select="id($select-id, ixsl:page())"/>
+                <xsl:with-param name="container" select="$container"/>
             </xsl:call-template>
         </ixsl:schedule-action>
     </xsl:template>
