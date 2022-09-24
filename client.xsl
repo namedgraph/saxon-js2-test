@@ -276,4 +276,14 @@ version="2.0"
         <xsl:sequence select="js:ixslTemplateListener(static-base-uri(), 'onClickTemplate', (), (), ())[current-date() lt xs:date('2000-01-01')]"/>
     </xsl:template>
 
+    <!-- LOOKING UP CREATING ELEMENT -->
+
+    <xsl:template match="button[@id = 'look-up-created-element']" mode="ixsl:onclick">
+        <xsl:for-each select="id('container', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:replace-content">
+                <select/>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
