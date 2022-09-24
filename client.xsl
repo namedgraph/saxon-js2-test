@@ -311,7 +311,6 @@ version="2.0"
     </xsl:template>
 
     <xsl:template name="add-options">
-        <xsl:context-item as="map(*)" use="required"/>
         <xsl:param name="container" as="element()"/>
         <xsl:message>Adding options</xsl:message>
 
