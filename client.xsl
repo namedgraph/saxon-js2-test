@@ -312,9 +312,10 @@ version="2.0"
 
     <xsl:template name="add-options">
         <xsl:param name="container" as="element()"/>
+        <xsl:message>Adding options</xsl:message>
+
         <xsl:for-each select="$container">
             <xsl:result-document href="?." method="ixsl:append-content">
-                <xsl:message>Adding options</xsl:message>
                 <option>A</option>
                 <option>B</option>
             </xsl:result-document>
