@@ -307,6 +307,7 @@ version="2.0"
             <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
                 <xsl:call-template name="add-options">
                     <xsl:with-param name="container" select="id($select-id, ixsl:page())"/>
+                    <xsl:with-param name="step" select="."/>
                 </xsl:call-template>
             </ixsl:schedule-action>
         </xsl:for-each>
@@ -314,12 +315,12 @@ version="2.0"
 
     <xsl:template name="add-options">
         <xsl:param name="container" as="element()"/>
+        <xsl:param name="step" as="xs:integer"/>
         <xsl:message>Adding options</xsl:message>
 
         <xsl:for-each select="$container">
             <xsl:result-document href="?." method="ixsl:append-content">
-                <option>A</option>
-                <option>B</option>
+                <option><xsl:value-of select="$step"/></option>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
