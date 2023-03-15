@@ -233,6 +233,10 @@ version="2.0"
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'svg:circle ondrag' ])"/>
     </xsl:template>
 
+    <xsl:template match="svg:*" mode="ixsl:onwheel">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'svg:* onwheel' ])"/>
+    </xsl:template>
+
     <xsl:template match="p" mode="ixsl:ondrag">
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrag' ])"/>
     </xsl:template>
@@ -290,6 +294,7 @@ version="2.0"
         <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/>
         <xsl:call-template name="add-options">
             <xsl:with-param name="container" select="$container"/>
+            <xsl:with-param name="step" select="1"/>
         </xsl:call-template>
     </xsl:template>
 
@@ -304,7 +309,7 @@ version="2.0"
 
         <xsl:for-each select="1 to 5">
             <!-- <xsl:variable name="container" select="id($select-id, ixsl:page())" as="element()"/> -->
-            <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'test.xml', 'headers': map{ 'Accept': 'text/xml' } }">
+            <ixsl:schedule-action wait="2000">
                 <xsl:call-template name="add-options">
                     <xsl:with-param name="container" select="id($select-id, ixsl:page())"/>
                     <xsl:with-param name="step" select="."/>
