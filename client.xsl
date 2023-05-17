@@ -251,6 +251,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondragover">
+        <ixsl:set-property name="dataTransfer.dropEffect" select="'move'" object="ixsl:event()"/>
         <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
         <xsl:message>p ondragover</xsl:message>
     </xsl:template>
