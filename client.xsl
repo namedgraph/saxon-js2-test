@@ -243,6 +243,7 @@ version="2.0"
 
     <xsl:template match="p" mode="ixsl:ondragstart">
         <xsl:message>p ondragstart</xsl:message>
+        <ixsl:set-property name="dataTransfer.effectAllowed" select="'move'" object="ixsl:event()"/>
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondragend">
