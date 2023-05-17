@@ -250,10 +250,12 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondragover">
+        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
         <xsl:message>p ondragover</xsl:message>
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondrop">
+        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
         <xsl:message>p ondrop</xsl:message>
     </xsl:template>
 
