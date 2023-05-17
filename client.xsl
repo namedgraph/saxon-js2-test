@@ -244,6 +244,7 @@ version="2.0"
     <xsl:template match="p" mode="ixsl:ondragstart">
         <xsl:message>p ondragstart</xsl:message>
         <ixsl:set-property name="dataTransfer.effectAllowed" select="'move'" object="ixsl:event()"/>
+        <xsl:sequence select="ixsl:call(ixsl:get(ixsl:event(), 'dataTransfer'), 'setData', [ 'text/uri-list', 'http://whateverest.com' ])"/>
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondragend">
@@ -257,6 +258,10 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondrop">
+        <xsl:message>
+            Data: <xsl:value-of select="ixsl:call(ixsl:get(ixsl:event(), 'dataTransfer'), 'getData', [ 'text/uri-list' ])"/>
+        </xsl:message>
+
         <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
         <xsl:message>p ondrop</xsl:message>
     </xsl:template>
