@@ -238,18 +238,16 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondrag">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrag' ])"/>
+        <xsl:message>p ondrag</xsl:message>
     </xsl:template>
 
-<!--
     <xsl:template match="p" mode="ixsl:ondragstart">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragstart' ])"/>
+        <xsl:message>p ondragstart</xsl:message>
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondragend">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragend' ])"/>
+        <xsl:message>p ondragend</xsl:message>
     </xsl:template>
--->
 
     <xsl:template match="p" mode="ixsl:ondragover">
         <xsl:message>p ondragover</xsl:message>
