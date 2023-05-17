@@ -252,11 +252,11 @@ version="2.0"
 -->
 
     <xsl:template match="p" mode="ixsl:ondragover">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragover' ])"/>
+        <xsl:message>p ondragover</xsl:message>
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondrop">
-        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrop' ])"/>
+        <xsl:message>p ondrop</xsl:message>
     </xsl:template>
 
     <!-- SECONDARY TRANSFORMATION -->
