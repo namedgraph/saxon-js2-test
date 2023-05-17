@@ -249,6 +249,14 @@ version="2.0"
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragend' ])"/>
     </xsl:template>
 
+    <xsl:template match="p" mode="ixsl:ondragover">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragover' ])"/>
+    </xsl:template>
+
+    <xsl:template match="p" mode="ixsl:ondrop">
+        <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrop' ])"/>
+    </xsl:template>
+
     <!-- SECONDARY TRANSFORMATION -->
 
     <xsl:template match="button[@id = 'load-mapped-doc']" mode="ixsl:onclick">
