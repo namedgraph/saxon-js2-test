@@ -245,6 +245,7 @@ version="2.0"
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragstart' ])"/>
     </xsl:template>
 
+<!--
     <xsl:template match="p" mode="ixsl:ondragend">
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragend' ])"/>
     </xsl:template>
@@ -252,6 +253,7 @@ version="2.0"
     <xsl:template match="p" mode="ixsl:ondragover">
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondragover' ])"/>
     </xsl:template>
+-->
 
     <xsl:template match="p" mode="ixsl:ondrop">
         <xsl:value-of select="ixsl:call(ixsl:window(), 'alert', [ 'p ondrop' ])"/>
