@@ -376,7 +376,7 @@ version="2.0"
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 Async doc base URI: <xsl:value-of select="base-uri($body)"/>
-                Async doc base _saxonBaseUri: <xsl:value-of select="ixsl:get('_saxonBaseUri', $body)"/>
+                Async doc base _saxonBaseUri: <xsl:value-of select="ixsl:get($body, '_saxonBaseUri')"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
