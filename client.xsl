@@ -354,4 +354,30 @@ version="2.0"
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
+
+
+    <xsl:template match="button[@id = 'load-doc']" mode="ixsl:onclick">
+        <xsl:for-each select="id('base-uri', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                Doc base URI: <xsl:value-of select="base-uri(document('https://kgdev.net/'))"/>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="button[@id = 'load-doc-async']" mode="ixsl:onclick">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://kgdev.net/', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
+            <xsl:call-template name="docLoaded"/>
+        </ixsl:schedule-action>
+    </xsl:template>
+
+    <xsl:template name="docLoaded">
+        <xsl:context-item as="map(*)" use="required"/>
+        <xsl:variable name="body" select="?body" as="document-node()"/>
+        <xsl:for-each select="id('base-uri', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                Async doc base URI: <xsl:value-of select="base-uri($body)"/>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
