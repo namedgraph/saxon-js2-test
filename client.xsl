@@ -359,13 +359,13 @@ version="2.0"
     <xsl:template match="button[@id = 'load-doc']" mode="ixsl:onclick">
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
-                Doc base URI: <xsl:value-of select="base-uri(document('https://kgdev.net/'))"/>
+                Doc base URI: <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
 
     <xsl:template match="button[@id = 'load-doc-async']" mode="ixsl:onclick">
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://kgdev.net/', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://namedgraph.github.io/saxon-js2-test/test.xml', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
             <xsl:call-template name="docLoaded"/>
         </ixsl:schedule-action>
     </xsl:template>
