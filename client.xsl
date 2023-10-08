@@ -376,6 +376,8 @@ version="2.0"
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 Async doc base URI: <xsl:value-of select="base-uri($body)"/>
+                <ixsl:set-property name="baseURI" select="'https://namedgraph.github.io/saxon-js2-test/test.xml'" object="$body"/>
+                Async doc set base URI: <xsl:value-of select="base-uri($body)"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
