@@ -359,7 +359,7 @@ version="2.0"
     <xsl:template match="button[@id = 'load-doc']" mode="ixsl:onclick">
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
-                Doc base URI: <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/>
+                Doc base base-uri() <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/><br/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
@@ -375,8 +375,9 @@ version="2.0"
         <xsl:variable name="body" select="?body" as="document-node()"/>
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
-                Async doc base URI: <xsl:value-of select="base-uri($body)"/>
-                Async doc base _saxonBaseUri: <xsl:value-of select="ixsl:get($body, '_saxonBaseUri')"/>
+                Async doc base-uri(): <xsl:value-of select="base-uri($body)"/><br/>
+                Async doc baseURI: <xsl:value-of select="ixsl:get($body, 'baseURI')"/><br/>
+                Async doc _saxonBaseUri: <xsl:value-of select="ixsl:get($body, '_saxonBaseUri')"/><br/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
