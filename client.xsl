@@ -356,6 +356,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'page-base-uri']" mode="ixsl:onclick">
+        <xsl:variable name="button" select="." as="element()"/>
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 base-uri(ixsl:page()): <xsl:value-of select="base-uri(ixsl:page())"/><br/>
@@ -366,7 +367,6 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'doc-base-uri']" mode="ixsl:onclick">
-        <xsl:variable name="button" select="." as="element()"/>
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 Doc base-uri(): <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/><br/>
