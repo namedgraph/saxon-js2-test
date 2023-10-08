@@ -355,16 +355,23 @@ version="2.0"
         </xsl:for-each>
     </xsl:template>
 
-
-    <xsl:template match="button[@id = 'load-doc']" mode="ixsl:onclick">
+    <xsl:template match="button[@id = 'page-base-uri']" mode="ixsl:onclick">
         <xsl:for-each select="id('base-uri', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
-                Doc base base-uri() <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/><br/>
+                base-uri(ixsl:page()): <xsl:value-of select="base-uri(ixsl:page())"/><br/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
 
-    <xsl:template match="button[@id = 'load-doc-async']" mode="ixsl:onclick">
+    <xsl:template match="button[@id = 'doc-base-uri']" mode="ixsl:onclick">
+        <xsl:for-each select="id('base-uri', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                Doc base base-uri(): <xsl:value-of select="base-uri(document('https://namedgraph.github.io/saxon-js2-test/test.xml'))"/><br/>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="button[@id = 'async-doc-base-uri']" mode="ixsl:onclick">
         <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://namedgraph.github.io/saxon-js2-test/test.xml', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
             <xsl:call-template name="docLoaded"/>
         </ixsl:schedule-action>
