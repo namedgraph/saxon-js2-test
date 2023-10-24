@@ -271,18 +271,11 @@ version="2.0"
             <xsl:variable name="items" select="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'items')"/>
 
             <xsl:message>
-                XXX<xsl:value-of select="serialize($items, map{ 'method': 'adaptive' } )"/>/XXX
-
-<!--                 <xsl:for-each select="$items">
-                    item.kind: <xsl:sequence select="ixsl:get(., 'kind')"/>
-                </xsl:for-each> -->
-
                 <xsl:for-each select="0 to xs:integer(ixsl:get($items, 'length')) - 1">
                     <xsl:variable name="item" select="map:get($items, .)"/>
 
-                    YYY<xsl:value-of select="serialize($item, map{ 'method': 'adaptive' } )"/>/YYY
-
                     item.kind: <xsl:sequence select="ixsl:get($item, 'kind')"/>
+                    item.type <xsl:sequence select="ixsl:get($item, 'type')"/>
                 </xsl:for-each>
             </xsl:message>
         </xsl:if>
