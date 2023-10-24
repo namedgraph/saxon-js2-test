@@ -258,12 +258,27 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="p" mode="ixsl:ondrop">
+        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
+        <xsl:message>p ondrop</xsl:message>
+
         <xsl:message>
             Data: <xsl:value-of select="ixsl:call(ixsl:get(ixsl:event(), 'dataTransfer'), 'getData', [ 'text/uri-list' ])"/>
         </xsl:message>
 
-        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
-        <xsl:message>p ondrop</xsl:message>
+        <!-- check whether files were dropped and iterate them -->
+        <xsl:if test="ixsl:contains(ixsl:get(ixsl:event(), 'dataTransfer'), 'items')">
+            <xsl:variable name="items" select="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'items')"/>
+
+            <xsl:message>
+                <xsl:for-each select="$items">
+                    item.type: <xsl:sequence select="ixsl:get(., 'type')"/>
+                </xsl:for-each>
+
+<!--                 <xsl:for-each select="0 to xs:integer(ixsl:get(., 'selectedOptions.length')) - 1">
+                    <xsl:sequence select="ixsl:get(ixsl:call(ixsl:get($select, 'selectedOptions'), 'item', [ . ]), 'value')"/>
+                </xsl:for-each> -->
+            </xsl:message>
+        </xsl:if>
     </xsl:template>
 
     <!-- SECONDARY TRANSFORMATION -->
