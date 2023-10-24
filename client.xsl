@@ -270,13 +270,14 @@ version="2.0"
             <xsl:variable name="items" select="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'items')"/>
 
             <xsl:message>
-                <xsl:for-each select="$items">
+                <xsl:copy-of select="$items"/>
+<!--                 <xsl:for-each select="$items">
                     item.kind: <xsl:sequence select="ixsl:get(., 'kind')"/>
-                </xsl:for-each>
-
-<!--                 <xsl:for-each select="0 to xs:integer(ixsl:get(., 'selectedOptions.length')) - 1">
-                    <xsl:sequence select="ixsl:get(ixsl:call(ixsl:get($select, 'selectedOptions'), 'item', [ . ]), 'value')"/>
                 </xsl:for-each> -->
+
+                <xsl:for-each select="0 to xs:integer(ixsl:get($items, 'length')) - 1">
+
+                </xsl:for-each>
             </xsl:message>
         </xsl:if>
     </xsl:template>
