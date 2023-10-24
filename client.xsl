@@ -271,7 +271,7 @@ version="2.0"
 
             <xsl:message>
                 <xsl:for-each select="$items">
-                    item.type: <xsl:sequence select="ixsl:get(., 'type')"/>
+                    item.kind: <xsl:sequence select="ixsl:get(., 'kind')"/>
                 </xsl:for-each>
 
 <!--                 <xsl:for-each select="0 to xs:integer(ixsl:get(., 'selectedOptions.length')) - 1">
