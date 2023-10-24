@@ -7,6 +7,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:js="http://saxonica.com/ns/globalJS"
 xmlns:c="https://www.w3.org/ns/ldt/core/domain#"
 xmlns:svg="http://www.w3.org/2000/svg"
+xmlns:map="http://www.w3.org/2005/xpath-functions/map"
 exclude-result-prefixes="#all"
 extension-element-prefixes="ixsl"
 version="2.0"
@@ -270,14 +271,18 @@ version="2.0"
             <xsl:variable name="items" select="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'items')"/>
 
             <xsl:message>
-                <xsl:value-of select="serialize($items, map{ 'method': 'adaptive' } )"/>
+                XXX<xsl:value-of select="serialize($items, map{ 'method': 'adaptive' } )"/>/XXX
 
 <!--                 <xsl:for-each select="$items">
                     item.kind: <xsl:sequence select="ixsl:get(., 'kind')"/>
                 </xsl:for-each> -->
 
                 <xsl:for-each select="0 to xs:integer(ixsl:get($items, 'length')) - 1">
+                    <xsl:variable name="item" select="map:get($items, .)"/>
 
+                    YYY<xsl:value-of select="serialize($item, map{ 'method': 'adaptive' } )"/>/YYY
+
+                    item.kind: <xsl:sequence select="ixsl:get($item, 'kind')"/>
                 </xsl:for-each>
             </xsl:message>
         </xsl:if>
