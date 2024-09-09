@@ -442,7 +442,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'multivalued-headers']" mode="ixsl:onclick">
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://kgdev.net', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'http://dbpedia.org/resource/XSLT', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
             <xsl:call-template name="multivaluedHeadersLoaded"/>
         </ixsl:schedule-action>
     </xsl:template>
