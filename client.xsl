@@ -428,7 +428,7 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
         <xsl:variable name="body" select="?body" as="document-node()"/>
         <xsl:for-each select="id('base-uri', ixsl:page())">
-            <xsl:result-document href="?." method="ixsl:replace-content">
+            <xsl:result-document href="?." method="ixsl:append-content">
                 <div id="externally-loaded-paragraph">
                     <xsl:copy-of select="$body//p"/> <!-- inject <p> from external XHTML document -->
                 </div>
