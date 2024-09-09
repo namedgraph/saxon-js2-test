@@ -419,7 +419,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'base-uri-change']" mode="ixsl:onclick">
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://namedgraph.github.io/saxon-js2-test/test.xhtml', 'headers': map{ 'Accept': 'application/xml+xhtml' } }">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://namedgraph.github.io/saxon-js2-test/test.html', 'headers': map{ 'Accept': 'text/html' } }">
             <xsl:call-template name="baseURITestLoaded"/>
         </ixsl:schedule-action>
     </xsl:template>
