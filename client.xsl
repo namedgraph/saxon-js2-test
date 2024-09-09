@@ -441,4 +441,21 @@ version="2.0"
         </xsl:for-each>
     </xsl:template>
 
+    <xsl:template match="button[@id = 'multivalued-headers']" mode="ixsl:onclick">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://kgdev.net', 'headers': map{ 'Accept': 'application/rdf+xml' } }">
+            <xsl:call-template name="multivaluedHeadersLoaded"/>
+        </ixsl:schedule-action>
+    </xsl:template>
+
+    <xsl:template name="multivaluedHeadersLoaded">
+        <xsl:context-item as="map(*)" use="required"/>
+        <xsl:variable name="response" select="."/>
+        
+        <xsl:for-each select="id('headers', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                ?headers?link: <xsl:value-of select="$response?headers?link"/>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
