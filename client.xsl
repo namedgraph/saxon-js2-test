@@ -418,4 +418,27 @@ version="2.0"
         </xsl:for-each>
     </xsl:template>
 
+    <xsl:template match="button[@id = 'base-uri-change']" mode="ixsl:onclick">
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://namedgraph.github.io/saxon-js2-test/test.xhtml', 'headers': map{ 'Accept': 'application/xml+xhtml' } }">
+            <xsl:call-template name="baseURITestLoaded"/>
+        </ixsl:schedule-action>
+    </xsl:template>
+
+    <xsl:template name="baseURITestLoaded">
+        <xsl:context-item as="map(*)" use="required"/>
+        <xsl:variable name="body" select="?body" as="document-node()"/>
+        <xsl:for-each select="id('base-uri', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:append-content">
+                <div id="externally-loaded-paragraph">
+                    <xsl:copy-of select="$body//p"/> <!-- inject <p> from external XHTML document -->
+                </div>
+            </xsl:result-document>
+        </xsl:for-each>
+
+        <xsl:for-each select="id('externally-loaded-paragraph', ixsl:page())/p">
+            <xsl:message>ixsl:get(., 'baseURI'): <xsl:value-of select="ixsl:get(., 'baseURI')"/></xsl:message>
+            <xsl:message>base-uri(.): <xsl:value-of select="base-uri(.)"/></xsl:message>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
