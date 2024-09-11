@@ -458,4 +458,32 @@ version="2.0"
         </xsl:for-each>
     </xsl:template>
 
+    <xsl:template match="p[@id = 'file-drop']" mode="ixsl:ondrop">
+        <xsl:sequence select="ixsl:call(ixsl:event(), 'preventDefault', [])"/>
+
+        <xsl:if test="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'files.length') gt 0">
+            <xsl:message>
+                <xsl:variable name="files" select="ixsl:get(ixsl:get(ixsl:event(), 'dataTransfer'), 'files')"/>
+                <xsl:for-each select="0 to xs:integer(ixsl:get($files, 'length')) - 1">
+                    <xsl:variable name="file" select="map:get($files, .)"/>
+                    <xsl:variable name="file-ext" select="replace(ixsl:get($file, 'name'), '.*\.', '')" as="xs:string?"/>
+                    <xsl:variable name="file-type" select="if (ixsl:contains($file, 'type')) then ixsl:get($file, 'type') else ()" as="xs:string?"/>
+                    <xsl:message>$file-type: <xsl:value-of select="$file-type"/></xsl:message>
+
+                    <ixsl:schedule-action http-request="map{ 'method': 'POST', 'href': ixsl:location(), 'body': $file, 'media-type': $file-type }">
+                        <xsl:call-template name="fileUploaded"/>
+                    </ixsl:schedule-action>
+                </xsl:for-each>
+            </xsl:message>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="fileUploaded">
+        <xsl:context-item as="map(*)" use="required"/>
+
+        <xsl:message>
+            ?status: <xsl:value-of select="?status"/>
+        </xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
