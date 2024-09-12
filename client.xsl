@@ -442,7 +442,9 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'multivalued-headers']" mode="ixsl:onclick">
-        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'https://dbpedia.org/page/XSLT' }">
+        <xsl:message>#multivalued-headers onclick</xsl:message>
+
+        <ixsl:schedule-action http-request="map{ 'method': 'GET', 'href': 'http://localhost:8000/test.xml' }">
             <xsl:call-template name="multivaluedHeadersLoaded"/>
         </ixsl:schedule-action>
     </xsl:template>
@@ -451,6 +453,8 @@ version="2.0"
         <xsl:context-item as="map(*)" use="required"/>
         <xsl:variable name="response" select="."/>
         
+        <xsl:message>multivaluedHeadersLoaded</xsl:message>
+
         <xsl:for-each select="id('headers', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:append-content">
                 ?headers?link: <xsl:value-of select="$response?headers?link"/>
