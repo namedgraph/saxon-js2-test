@@ -497,7 +497,7 @@ version="2.0"
             on-completion="ac:callback#0"/>
     </xsl:template>
 
-    <xsl:function name="ac:callback" as="item()*">
+    <xsl:function name="ac:callback" as="item()*" ixsl:updating="yes">
         <xsl:variable name="callback-name" select="QName('https://w3id.org/atomgraph/client#', 'ac:update-document')" as="xs:QName"/>
         <xsl:variable name="callback-func" select="function-lookup($callback-name, 0)"/>
         <xsl:sequence select="$callback-func()"/>
