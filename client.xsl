@@ -492,10 +492,16 @@ version="2.0"
 
     <xsl:template match="button[@id = 'updating-function']" mode="ixsl:onclick">
         <xsl:message>Updating function test</xsl:message>
+        <ixsl:promise 
+            select="ixsl:sleep(1000)" 
+            on-completion="ac:callback#0"/>
+    </xsl:template>
+
+    <xsl:function name="ac:callback" as="item()*">
         <xsl:variable name="callback-name" select="QName('https://w3id.org/atomgraph/client#', 'ac:update-document')" as="xs:QName"/>
         <xsl:variable name="callback-func" select="function-lookup($callback-name, 0)"/>
         <xsl:sequence select="$callback-func()"/>
-    </xsl:template>
+    </xsl:function>
 
     <xsl:function name="ac:update-document" as="item()*" ixsl:updating="yes">
         <xsl:for-each select="id('updating-function-result', ixsl:page())">
