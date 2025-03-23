@@ -491,22 +491,27 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'updating-function']" mode="ixsl:onclick">
+        <xsl:variable name="request" select="map{ 'something': 'something' }" as="map(*)"/>
+
         <xsl:message>Updating function test</xsl:message>
         <ixsl:promise 
             select="ixsl:sleep(1000)" 
-            on-completion="ac:callback#0"/>
+            on-completion="function() { ac:callback($request) }"/>
     </xsl:template>
 
     <xsl:function name="ac:callback" as="item()*" ixsl:updating="yes">
+        <xsl:param name="request" as="map(*)"/>
+
         <xsl:variable name="callback-name" select="QName('https://w3id.org/atomgraph/client#', 'ac:update-document')" as="xs:QName"/>
-        <xsl:variable name="callback-func" select="function-lookup($callback-name, 0)"/>
-        <xsl:sequence select="$callback-func()"/>
+        <xsl:variable name="callback-func" select="function-lookup($callback-name, 1)"/>
+        <xsl:sequence select="$callback-func($request)"/>
     </xsl:function>
 
     <xsl:function name="ac:update-document" as="item()*" ixsl:updating="yes">
+        <xsl:param name="request" as="map(*)"/>
         <xsl:for-each select="id('updating-function-result', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:replace-content">
-                <p>Updating function</p>
+                <p>Updated: <xsl:value-of select="map:get($request, 'something')"/></p>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:function>
