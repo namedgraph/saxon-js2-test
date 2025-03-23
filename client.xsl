@@ -490,4 +490,18 @@ version="2.0"
         </xsl:message>
     </xsl:template>
 
+    <xsl:template match="button[@id = 'updating-function']" mode="ixsl:onclick">
+        <xsl:variable name="callback-name" select="'ac:update-document'" as="xs:string"/>
+        <xsl:variable name="callback-func" select="function-lookup($callback-name, 0)"/>
+        <xsl:sequence select="$callback-func()"/>
+    </xsl:template>
+
+    <xsl:function name="ac:update-document" as="item()*" ixsl:updating="yes">
+        <xsl:for-each select="id('updating-function-result', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:replace-content">
+                <p>Updating function</p>
+            </xsl:result-document>
+        </xsl:for-each>
+    </xsl:function>
+
 </xsl:stylesheet>
