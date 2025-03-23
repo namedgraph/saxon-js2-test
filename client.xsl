@@ -507,9 +507,9 @@ version="2.0"
         <xsl:sequence select="$callback-func($request)"/>
     </xsl:function>
 
-    <xsl:function name="ac:update-document" as="item()*" ixsl:updating="yes">
+    <xsl:function name="ac:update-document" ixsl:updating="yes">
         <xsl:param name="request" as="map(*)"/>
-        
+
         <xsl:message>Invoking xsl:result-document</xsl:message>
         <xsl:for-each select="id('updating-function-result', ixsl:page())">
             <xsl:result-document href="?." method="ixsl:replace-content">
