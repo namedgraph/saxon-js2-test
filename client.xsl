@@ -491,6 +491,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template match="button[@id = 'updating-function']" mode="ixsl:onclick">
+        <xsl:message>Updating function test</xsl:message>
         <xsl:variable name="callback-name" select="QName('https://w3id.org/atomgraph/client#', 'ac:update-document')" as="xs:QName"/>
         <xsl:variable name="callback-func" select="function-lookup($callback-name, 0)"/>
         <xsl:sequence select="$callback-func()"/>
