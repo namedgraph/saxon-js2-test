@@ -533,9 +533,11 @@ version="2.0"
 
         <xsl:message>ac:promise-1 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
-        <xsl:call-template name="promise-template">
-            <xsl:with-param name="id" select="'whateverest'"/>
-        </xsl:call-template>
+        <xsl:for-each select="$context">
+            <xsl:call-template name="promise-template">
+                <xsl:with-param name="id" select="'whateverest'"/>
+            </xsl:call-template>
+        </xsl:for-each>
 
         <xsl:sequence select="$context"/>
     </xsl:function>
