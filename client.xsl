@@ -522,19 +522,19 @@ version="2.0"
         <xsl:variable name="request" select="map{ 'something': 'something' }" as="map(*)"/>
 
         <xsl:message>Nested promise test</xsl:message>
-        <xsl:variable name="context" select="{ 'request': $request }" as="map(*)"/>
+        <xsl:variable name="context" select="map{ 'request': $request }" as="map(*)"/>
 
         <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-1($context, ?))"/>
+            => ixsl:then(ac:promise-1($context))"/>
     </xsl:template>
 
     <xsl:function name="ac:promise-1" as="map(*)" ixsl:updating="yes">
-        <xsl:param name="context" select="{ 'request': $request }" as="map(*)"/>
+        <xsl:param name="context" as="map(*)"/>
 
-        <xsl:message>ac:promise-1 context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+        <xsl:message>ac:promise-1 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
         <xsl:call-template name="promise-template">
-            <xsl:with-param name="context" select="$context"/>
+            <xsl:with-param name="id" select="'whateverest'"/>
         </xsl:call-template>
 
         <xsl:sequence select="$context"/>
@@ -542,18 +542,20 @@ version="2.0"
 
     <xsl:template name="promise-template">
         <xsl:context-item as="map(*)" use="required"/>
-        <xsl:param name="context" select="." as="map(*)"/>
+        <xsl:param name="id" as="xs:string"/>
+        <xsl:variable name="context" select="." as="map(*)"/>
 
-        <xsl:message>promise-template <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+        <xsl:message>promise-template $id: <xsl:value-of select="$id"/></xsl:message>
+        <xsl:message>promise-template $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
         <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-2($context, ?))"/>
-    </xs:template>
+            => ixsl:then(ac:promise-2($context))"/>
+    </xsl:template>
 
-    <xsl:function name="ac:promise-1" as="map(*)" ixsl:updating="yes">
+    <xsl:function name="ac:promise-2" as="map(*)" ixsl:updating="yes">
         <xsl:param name="context" as="map(*)"/>
 
-        <xsl:message>ac:promise-2 context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+        <xsl:message>ac:promise-2 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
         <xsl:sequence select="$context"/>
     </xsl:function>
