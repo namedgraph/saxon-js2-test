@@ -580,8 +580,8 @@ version="2.0"
         <xsl:message>promise-template-2 $id: <xsl:value-of select="$id"/></xsl:message>
         <xsl:message>promise-template-2 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
-        <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-2($context, ?))"/>
+        <!-- <ixsl:promise select="ixsl:sleep(1000)
+            => ixsl:then(ac:promise-2($context, ?))"/> -->
     </xsl:template>
 
 </xsl:stylesheet>
