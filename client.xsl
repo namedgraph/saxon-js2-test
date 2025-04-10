@@ -525,11 +525,12 @@ version="2.0"
         <xsl:variable name="context" select="map{ 'request': $request }" as="map(*)"/>
 
         <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-1($context))"/>
+            => ixsl:then(ac:promise-1($context, ?))"/>
     </xsl:template>
 
     <xsl:function name="ac:promise-1" as="map(*)" ixsl:updating="yes">
         <xsl:param name="context" as="map(*)"/>
+        <xsl:param name="sleep-result" as="item()?"/>
 
         <xsl:message>ac:promise-1 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
@@ -551,11 +552,12 @@ version="2.0"
         <xsl:message>promise-template $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
         <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-2($context))"/>
+            => ixsl:then(ac:promise-2($context, ?))"/>
     </xsl:template>
 
     <xsl:function name="ac:promise-2" as="map(*)" ixsl:updating="yes">
         <xsl:param name="context" as="map(*)"/>
+       <xsl:param name="sleep-result" as="item()?"/>
 
         <xsl:message>ac:promise-2 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
 
