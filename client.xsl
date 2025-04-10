@@ -518,4 +518,44 @@ version="2.0"
         </xsl:for-each>
     </xsl:function>
 
+    <xsl:template match="button[@id = 'nested-promise']" mode="ixsl:onclick">
+        <xsl:variable name="request" select="map{ 'something': 'something' }" as="map(*)"/>
+
+        <xsl:message>Nested promise test</xsl:message>
+        <xsl:variable name="context" select="{ 'request': $request }" as="map(*)"/>
+
+        <ixsl:promise select="ixsl:sleep(1000)
+            => ixsl:then(ac:promise-1($context, ?))"/>
+    </xsl:template>
+
+    <xsl:function name="ac:promise-1" as="map(*)" ixsl:updating="yes">
+        <xsl:param name="context" select="{ 'request': $request }" as="map(*)"/>
+
+        <xsl:message>ac:promise-1 context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+
+        <xsl:call-template name="promise-template">
+            <xsl:with-param name="context" select="$context"/>
+        </xsl:call-template>
+
+        <xsl:sequence select="$context"/>
+    </xsl:function>
+
+    <xsl:template name="promise-template">
+        <xsl:context-item as="map(*)" use="required"/>
+        <xsl:param name="context" select="." as="map(*)"/>
+
+        <xsl:message>promise-template <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+
+        <ixsl:promise select="ixsl:sleep(1000)
+            => ixsl:then(ac:promise-2($context, ?))"/>
+    </xs:template>
+
+    <xsl:function name="ac:promise-1" as="map(*)" ixsl:updating="yes">
+        <xsl:param name="context" as="map(*)"/>
+
+        <xsl:message>ac:promise-2 context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
+
+        <xsl:sequence select="$context"/>
+    </xsl:function>
+
 </xsl:stylesheet>
