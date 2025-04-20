@@ -584,19 +584,21 @@ version="2.0"
     <xsl:template match="button[@id = 'return-promise']" mode="ixsl:onclick">
         <xsl:message>Return promise test</xsl:message>
 
-        <xsl:variable name="promise" select="ac:return-promise()" as="item()?"/>
+        <xsl:variable name="promise" as="item()">
+            <xsl:call-template name="ac:return-promise"/>
+        </xsl:variable>
         <xsl:message>exists($promise): <xsl:value-of select="exists($promise)"/></xsl:message>
 
         <ixsl:promise select="$promise => ixsl:then(ac:return-promise-callback#1)"/>
     </xsl:template>
 
-    <xsl:function name="ac:return-promise" ixsl:updating="yes">
+    <xsl:template name="ac:return-promise" as="item()">
         <xsl:sequence select="ixsl:sleep(1000)"/>
-    </xsl:function>
+    </xsl:template>
 
     <xsl:function name="ac:return-promise-callback" ixsl:updating="yes">
         <xsl:param name="sleep-result" as="item()?"/>
-        
+
         <xsl:message>ac:return-promise-callback</xsl:message>
     </xsl:function>
 
