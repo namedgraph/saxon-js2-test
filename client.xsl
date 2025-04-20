@@ -579,9 +579,23 @@ version="2.0"
 
         <xsl:message>promise-template-2 $id: <xsl:value-of select="$id"/></xsl:message>
         <xsl:message>promise-template-2 $context: <xsl:value-of select="serialize($context, map{ 'method': 'adaptive' })"/></xsl:message>
-
-        <!-- <ixsl:promise select="ixsl:sleep(1000)
-            => ixsl:then(ac:promise-2($context, ?))"/> -->
     </xsl:template>
+
+    <xsl:template match="button[@id = 'return-promise']" mode="ixsl:onclick">
+        <xsl:message>Return promise test</xsl:message>
+
+        <xsl:variable name="promise" select="ac:return-promise()" as="item()?"/>
+        <xsl:message>exists($promise): <xsl:value-of select="exists($promise)"/></xsl:message>
+
+        <ixsl:promise select="$promise => ixsl:then(ac:return-promise-callback#0)"/>
+    </xsl:template>
+
+    <xsl:function name="ac:return-promise" ixsl:updating="yes">
+        <xsl:sequence select="ixsl:sleep(1000)"/>
+    </xsl:function>
+
+    <xsl:function name="ac:return-promise-callback" ixsl:updating="yes">
+        <xsl:message>ac:return-promise-callback</xsl:message>
+    </xsl:function>
 
 </xsl:stylesheet>
