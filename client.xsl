@@ -589,11 +589,11 @@ version="2.0"
         </xsl:variable>
         <xsl:message>exists($promise): <xsl:value-of select="exists($promise)"/></xsl:message>
 
-        <ixsl:promise select="$promise => ixsl:then(ac:return-promise-callback#1)"/>
+        <ixsl:promise select="$promise"/>
     </xsl:template>
 
     <xsl:template name="ac:return-promise" as="item()">
-        <xsl:sequence select="ixsl:sleep(1000)"/>
+        <xsl:sequence select="ixsl:sleep(1000) => ixsl:then(ac:return-promise-callback#1)"/>
     </xsl:template>
 
     <xsl:function name="ac:return-promise-callback" ixsl:updating="yes">
