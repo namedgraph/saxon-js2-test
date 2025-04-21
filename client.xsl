@@ -600,6 +600,12 @@ version="2.0"
         <xsl:param name="sleep-result" as="item()?"/>
 
         <xsl:message>ac:return-promise-callback</xsl:message>
+
+        <xsl:for-each select="id('return-promise-container', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:replace-content">
+                <p>Promise resolved</p>
+            </xsl:result-document>
+        </xsl:for-each>
     </xsl:function>
 
 </xsl:stylesheet>
