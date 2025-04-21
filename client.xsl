@@ -593,7 +593,7 @@ version="2.0"
     </xsl:template>
 
     <xsl:template name="ac:return-promise" as="item()">
-        <xsl:sequence select="ixsl:sleep(1000) => ixsl:then(ac:return-promise-callback#1)"/>
+        <xsl:sequence select="ixsl:sleep(0) => ixsl:then(ac:return-promise-callback#1)"/>
     </xsl:template>
 
     <xsl:function name="ac:return-promise-callback" ixsl:updating="yes">
