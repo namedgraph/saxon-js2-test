@@ -608,4 +608,26 @@ version="2.0"
         </xsl:for-each>
     </xsl:function>
 
+    <!-- SVG namespace test -->
+    <xsl:template match="svg:svg[@id = 'test-svg']" mode="ixsl:onclick">
+        <xsl:message>Replacing SVG element...</xsl:message>
+
+        <!-- Create new SVG in a variable -->
+        <xsl:variable name="new-svg-doc" as="document-node()">
+            <xsl:document>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200" width="200" height="200" style="border: 1px solid black;" id="test-svg">
+                    <circle cx="100" cy="100" r="50" fill="blue"/>
+                    <text x="100" y="100" text-anchor="middle" dy=".3em" fill="white">Replaced!</text>
+                </svg>
+            </xsl:document>
+        </xsl:variable>
+
+        <!-- Try replacing with ixsl:replace-element -->
+        <xsl:result-document href="?." method="ixsl:replace-element">
+            <xsl:copy-of select="$new-svg-doc/svg:svg"/>
+        </xsl:result-document>
+
+        <xsl:message>SVG replaced. Check console: document.querySelector('circle').namespaceURI</xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
