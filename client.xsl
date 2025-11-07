@@ -635,7 +635,7 @@ version="2.0"
         <xsl:message>========== JS Array No-Convert Test ==========</xsl:message>
 
         <!-- Create the test object with array property using JavaScript -->
-        <xsl:variable name="test-obj" select="js:createTestObject()"/>
+        <xsl:sequence select="js:createTestObject()"/>
         <xsl:message>Test object created</xsl:message>
 
         <!-- Get the test object from window (it's stored there by createTestObject) -->
