@@ -630,4 +630,63 @@ version="2.0"
         <xsl:message>SVG replaced. Check console: document.querySelector('circle').namespaceURI</xsl:message>
     </xsl:template>
 
+    <!-- JS ARRAY CONVERSION TEST - Saxon-JS 3.0 convert-result=false and convert-args=false -->
+    <xsl:template match="button[@id = 'js-array-no-convert']" mode="ixsl:onclick">
+        <xsl:message>========== JS Array No-Convert Test ==========</xsl:message>
+
+        <!-- Create the test object with array property using JavaScript -->
+        <xsl:variable name="test-obj" select="js:createTestObject()"/>
+        <xsl:message>Test object created</xsl:message>
+
+        <!-- Get the test object from window (it's stored there by createTestObject) -->
+        <xsl:variable name="win-test-obj" select="ixsl:get(ixsl:window(), 'testObject')"/>
+
+        <!-- Test 1: Get the items array WITHOUT conversion (convert-result=false) -->
+        <xsl:variable name="items-array" select="ixsl:get($win-test-obj, 'items', map{ 'convert-result': false() })"/>
+        <xsl:message>Got items array as JSValue (no conversion)</xsl:message>
+
+        <!-- Access the array's .length property - the array is still a JavaScript array -->
+        <xsl:variable name="array-length" select="ixsl:get($items-array, 'length')"/>
+        <xsl:message>Array length (via ixsl:get on JSValue): <xsl:value-of select="$array-length"/></xsl:message>
+
+        <!-- Test 2: Create a new JS object to push to the array -->
+        <xsl:variable name="new-item-statement" as="element()">
+            <root statement="{{ id: 3, value: 'third' }}"/>
+        </xsl:variable>
+        <xsl:variable name="new-item" select="ixsl:eval(string($new-item-statement/@statement))"/>
+        <xsl:message>Created new item object</xsl:message>
+
+        <!-- Test 3: Push the new object to the array WITHOUT converting the argument (convert-args=false) -->
+        <!-- This keeps the JS object in its native form rather than converting to XDM and back -->
+        <xsl:variable name="push-result" select="ixsl:call($items-array, 'push', [ $new-item ], map{ 'convert-args': false() })"/>
+        <xsl:message>Pushed new item to array, new length: <xsl:value-of select="$push-result"/></xsl:message>
+
+        <!-- Verify: Get the array length again -->
+        <xsl:variable name="new-array-length" select="ixsl:get($items-array, 'length')"/>
+        <xsl:message>Array length after push: <xsl:value-of select="$new-array-length"/></xsl:message>
+
+        <!-- Display results in the page -->
+        <xsl:for-each select="id('js-array-test-result', ixsl:page())">
+            <xsl:result-document href="?." method="ixsl:replace-content">
+                <div>
+                    <h3>JS Array No-Convert Test Results</h3>
+                    <p><strong>Initial array length:</strong> <xsl:value-of select="$array-length"/></p>
+                    <p><strong>After push, array length:</strong> <xsl:value-of select="$new-array-length"/></p>
+                    <p><strong>Success:</strong> <xsl:value-of select="if ($new-array-length = $array-length + 1) then 'YES - Array was modified without XDM conversion!' else 'NO - Something went wrong'"/></p>
+                    <p style="font-size: 0.9em; color: #666;">
+                        This test demonstrates:
+                        <br/>• <code>ixsl:get()</code> with <code>convert-result=false</code> to get JS array without conversion
+                        <br/>• <code>ixsl:call()</code> with <code>convert-args=false</code> to push JS object to array
+                        <br/>• The array remains a native JavaScript array throughout
+                    </p>
+                    <p style="font-size: 0.9em; color: #666;">
+                        Check browser console to see: <code>window.testObject.items</code>
+                    </p>
+                </div>
+            </xsl:result-document>
+        </xsl:for-each>
+
+        <xsl:message>========== Test Complete ==========</xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>

@@ -24,3 +24,24 @@ var ixslTemplateListener = function(stylesheetLocation, initialTemplate, stylesh
 
     SaxonJS.transform(options, 'async').then(res => console.log('Second transformation run:', res.principalResult)).catch(err => console.log('Second transformation failed.', err));;
 };
+
+var createTestObject = function()
+{
+	// Create a test object with an array property
+	var testObj = {
+		name: "TestObject",
+		items: [
+			{ id: 1, value: "first" },
+			{ id: 2, value: "second" }
+		],
+		metadata: {
+			created: new Date(),
+			version: "1.0"
+		}
+	};
+
+	// Store it on the window for access from XSLT
+	window.testObject = testObj;
+	console.log("Created test object with array:", testObj);
+	return testObj;
+};
